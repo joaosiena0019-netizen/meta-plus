@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>META+</title>
 
@@ -14,11 +14,43 @@
     padding:0;
 }
 
+:root{
+    --bg:#06110c;
+    --card:#0b1c14;
+    --card2:#10251b;
+    --border:#1d3d2d;
+    --green:#35e982;
+    --green2:#20c96b;
+    --text:#f5f8f6;
+    --muted:#8ca69a;
+    --yellow:#ffc94d;
+    --red:#ff6868;
+}
+
+html{
+    width:100%;
+    min-height:100%;
+    background:var(--bg);
+}
+
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#07130f;
-    color:#fff;
+    width:100%;
     min-height:100vh;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            #123c28 0%,
+            #06110c 42%
+        );
+    color:var(--text);
 }
 
 button,
@@ -33,289 +65,644 @@ button{
 
 .app{
     width:100%;
-    max-width:1100px;
+    max-width:1180px;
     margin:auto;
-    padding:20px;
+    padding:
+        max(18px, env(safe-area-inset-top))
+        max(16px, env(safe-area-inset-right))
+        max(28px, env(safe-area-inset-bottom))
+        max(16px, env(safe-area-inset-left));
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 .header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:25px;
+    gap:15px;
+    margin-bottom:22px;
 }
 
 .logo{
-    font-size:30px;
+    font-size:clamp(25px,4vw,34px);
     font-weight:900;
-    letter-spacing:-1px;
+    letter-spacing:-1.5px;
 }
 
 .logo span{
-    color:#39e58c;
+    color:var(--green);
+}
+
+.subtitle{
+    color:var(--muted);
+    font-size:13px;
+    margin-top:3px;
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.icon-btn{
+    width:44px;
+    height:44px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:#0c2118;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:18px;
 }
 
 .mode{
-    background:#12251d;
-    border:1px solid #214535;
-    color:#fff;
-    padding:10px 15px;
+    border:1px solid var(--border);
+    background:#0c2118;
+    color:white;
+    padding:11px 13px;
     border-radius:12px;
+    outline:none;
 }
 
-/* CARDS */
+/* ================= HERO ================= */
 
-.card{
-    background:#0d2018;
-    border:1px solid #1d3a2c;
-    border-radius:20px;
-    padding:20px;
-    margin-bottom:18px;
+.hero{
+    background:
+        linear-gradient(
+            135deg,
+            rgba(22,75,49,.95),
+            rgba(8,30,20,.98)
+        );
+    border:1px solid #28563f;
+    border-radius:24px;
+    padding:clamp(20px,4vw,30px);
+    position:relative;
+    overflow:hidden;
 }
 
-.card-title{
-    font-size:14px;
-    color:#8fa99d;
-    margin-bottom:10px;
+.hero:after{
+    content:"";
+    position:absolute;
+    width:230px;
+    height:230px;
+    border-radius:50%;
+    right:-120px;
+    top:-130px;
+    background:rgba(53,233,130,.08);
 }
 
-.big-number{
-    font-size:38px;
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1.5fr;
+    gap:25px;
+    align-items:center;
+}
+
+.eyebrow{
+    color:#91ada0;
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:1.4px;
+}
+
+.hero-title{
+    font-size:clamp(40px,8vw,70px);
+    line-height:1;
+    margin:8px 0;
     font-weight:900;
 }
 
-.green{
-    color:#39e58c;
+.hero-text{
+    color:#a7beb4;
+    font-size:14px;
 }
 
-.yellow{
-    color:#ffd45a;
+.circle{
+    width:150px;
+    height:150px;
+    margin:auto;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    position:relative;
+    background:
+        radial-gradient(
+            circle,
+            #0b2117 56%,
+            transparent 57%
+        ),
+        conic-gradient(
+            var(--green) 0 78%,
+            #1d3b2d 78% 100%
+        );
 }
 
-.red{
-    color:#ff6b6b;
+.circle-number{
+    font-size:34px;
+    font-weight:900;
 }
-
-/* PROGRESS */
 
 .progress{
+    height:12px;
     width:100%;
-    height:14px;
-    background:#172d24;
+    background:#183228;
     border-radius:20px;
     overflow:hidden;
-    margin:15px 0;
+    margin:18px 0 10px;
 }
 
 .progress-bar{
     height:100%;
-    background:#39e58c;
     border-radius:20px;
-    transition:.4s;
+    background:
+        linear-gradient(
+            90deg,
+            var(--green2),
+            #74f2a7
+        );
+    transition:.3s;
 }
 
-/* GRID */
+.hero-footer{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    color:#b3c8bf;
+    font-size:13px;
+    flex-wrap:wrap;
+}
 
-.grid{
+/* ================= STATS ================= */
+
+.stats{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:15px 0;
 }
 
-.grid3{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
+.stat{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:17px;
+    min-width:0;
 }
 
-/* INDUSTRIAS */
-
-.industry{
-    background:#10271e;
-    border:1px solid #214535;
-    border-radius:16px;
-    padding:16px;
+.stat-label{
+    color:var(--muted);
+    font-size:12px;
 }
 
-.industry-header{
+.stat-value{
+    font-size:clamp(18px,3vw,25px);
+    font-weight:900;
+    margin-top:7px;
+    overflow-wrap:anywhere;
+}
+
+.green{
+    color:var(--green);
+}
+
+.yellow{
+    color:var(--yellow);
+}
+
+.red{
+    color:var(--red);
+}
+
+/* ================= SECTION ================= */
+
+.section-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:10px;
+    gap:10px;
+    margin:25px 0 12px;
+}
+
+.section-title{
+    font-size:18px;
+    font-weight:900;
+}
+
+.section-info{
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* ================= INDUSTRIAS ================= */
+
+.industries{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+}
+
+.industry{
+    background:
+        linear-gradient(
+            145deg,
+            #0d241a,
+            #091811
+        );
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:17px;
+    min-width:0;
+}
+
+.industry-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
 }
 
 .industry-name{
-    font-weight:bold;
+    font-size:16px;
+    font-weight:900;
 }
 
-.percent{
+.industry-percent{
     font-size:20px;
     font-weight:900;
 }
 
-/* RANKING */
+.mini-progress{
+    height:8px;
+    background:#1a3529;
+    border-radius:20px;
+    margin:14px 0;
+    overflow:hidden;
+}
 
-.rank{
+.mini-fill{
+    height:100%;
+    border-radius:20px;
+    background:var(--green);
+}
+
+.money-line{
+    display:flex;
+    justify-content:space-between;
+    gap:8px;
+    font-size:12px;
+    color:var(--muted);
+    flex-wrap:wrap;
+}
+
+.industry-divider{
+    height:1px;
+    background:#1a3528;
+    margin:14px 0;
+}
+
+.daily{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:10px;
+}
+
+.daily-label{
+    color:var(--muted);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+}
+
+.daily-value{
+    color:var(--green);
+    font-size:19px;
+    font-weight:900;
+    margin-top:4px;
+}
+
+.days{
+    color:#9cb4a9;
+    font-size:11px;
+    text-align:right;
+}
+
+/* ================= RADAR ================= */
+
+.radar{
+    margin-top:15px;
+    padding:20px;
+    background:#0b2117;
+    border:1px solid #24543b;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+.radar-icon{
+    flex:none;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    border:2px solid var(--green);
+    display:grid;
+    place-items:center;
+    font-size:25px;
+    box-shadow:0 0 0 8px rgba(53,233,130,.05);
+}
+
+.radar-title{
+    color:var(--green);
+    font-size:18px;
+    font-weight:900;
+    margin:4px 0;
+}
+
+.radar-text{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.5;
+}
+
+/* ================= RANKING ================= */
+
+.ranking{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.person{
     display:flex;
     align-items:center;
     gap:12px;
-    padding:14px 0;
-    border-bottom:1px solid #1b382b;
+    padding:14px;
+    border-bottom:1px solid #183428;
 }
 
-.rank:last-child{
+.person:last-child{
     border-bottom:0;
-}
-
-.position{
-    width:35px;
-    font-size:20px;
-    font-weight:bold;
 }
 
 .avatar{
     width:42px;
     height:42px;
     border-radius:50%;
-    background:#1b3b2c;
+    background:#17392a;
+    display:grid;
+    place-items:center;
+    font-weight:900;
+    flex:none;
+}
+
+.person-info{
+    flex:1;
+    min-width:0;
+}
+
+.person-name{
+    font-weight:800;
+}
+
+.person-status{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:3px;
+}
+
+.person-percent{
+    font-size:19px;
+    font-weight:900;
+}
+
+/* ================= BOTTOM ================= */
+
+.bottom{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:5px;
+    background:#081610;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:8px;
+    margin-top:20px;
+}
+
+.bottom-item{
+    min-height:58px;
+    border-radius:14px;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    font-weight:bold;
+    gap:4px;
+    color:#718c81;
+    font-size:10px;
 }
 
-.rank-info{
-    flex:1;
+.bottom-item b{
+    font-size:19px;
 }
 
-.rank-name{
-    font-weight:bold;
+.bottom-item.active{
+    color:var(--green);
+    background:#0f2b1e;
 }
 
-.rank-status{
-    font-size:12px;
-    color:#8fa99d;
-    margin-top:4px;
-}
+/* ================= DESKTOP ================= */
 
-/* BUTTONS */
-
-.btn{
-    border:0;
-    border-radius:12px;
-    padding:12px 18px;
-    background:#39e58c;
-    color:#062015;
-    font-weight:bold;
-}
-
-.btn.secondary{
-    background:#193329;
-    color:#fff;
-}
-
-.btn.danger{
-    background:#512727;
-    color:#fff;
-}
-
-/* FORM */
-
-.form-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-}
-
-label{
-    display:block;
-    font-size:12px;
-    color:#8fa99d;
-    margin-bottom:6px;
-}
-
-input,
-select{
-    width:100%;
-    padding:12px;
-    background:#07130f;
-    color:#fff;
-    border:1px solid #315341;
-    border-radius:10px;
-    outline:none;
-}
-
-input:focus,
-select:focus{
-    border-color:#39e58c;
-}
-
-/* TABS */
-
-.tabs{
-    display:flex;
-    gap:8px;
-    margin-bottom:18px;
-    overflow:auto;
-}
-
-.tab{
-    border:1px solid #254838;
-    background:#0d2018;
-    color:#b5c9c0;
-    padding:11px 18px;
-    border-radius:12px;
-    white-space:nowrap;
-}
-
-.tab.active{
-    background:#39e58c;
-    color:#062015;
-    border-color:#39e58c;
-    font-weight:bold;
-}
-
-/* ALERT */
-
-.alert{
-    padding:15px;
-    border-radius:14px;
-    margin-top:12px;
-    background:#173428;
-    border:1px solid #285641;
-}
-
-.hidden{
-    display:none;
-}
-
-/* MOBILE */
-
-@media(max-width:700px){
+@media(min-width:1100px){
 
     .app{
-        padding:14px;
+        padding-left:24px;
+        padding-right:24px;
     }
 
-    .grid,
-    .grid3,
-    .form-grid{
+    .industries{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+/* ================= TABLET ================= */
+
+@media(max-width:900px){
+
+    .hero-grid{
         grid-template-columns:1fr;
+    }
+
+    .circle{
+        width:130px;
+        height:130px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .industries{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* ================= CELULAR ================= */
+
+@media(max-width:600px){
+
+    .app{
+        padding:12px;
     }
 
     .header{
         align-items:flex-start;
     }
 
-    .logo{
-        font-size:26px;
+    .subtitle{
+        font-size:11px;
     }
 
-    .big-number{
-        font-size:32px;
+    .header-actions{
+        gap:5px;
     }
+
+    .mode{
+        max-width:130px;
+        font-size:12px;
+        padding:10px 7px;
+    }
+
+    .icon-btn{
+        width:40px;
+        height:40px;
+    }
+
+    .hero{
+        border-radius:20px;
+        padding:18px;
+    }
+
+    .hero-grid{
+        gap:16px;
+    }
+
+    .hero-title{
+        font-size:48px;
+    }
+
+    .circle{
+        width:118px;
+        height:118px;
+    }
+
+    .circle-number{
+        font-size:28px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stat{
+        padding:14px;
+    }
+
+    .stat-value{
+        font-size:18px;
+    }
+
+    .industries{
+        grid-template-columns:1fr;
+    }
+
+    .industry{
+        padding:16px;
+    }
+
+    .section-title{
+        font-size:17px;
+    }
+
+    .radar{
+        align-items:flex-start;
+    }
+
+    .radar-icon{
+        width:50px;
+        height:50px;
+    }
+
+}
+
+/* ================= CELULARES MUITO PEQUENOS ================= */
+
+@media(max-width:360px){
+
+    .app{
+        padding:9px;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+
+    .mode{
+        max-width:115px;
+    }
+
+    .hero-title{
+        font-size:42px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .hero-footer{
+        flex-direction:column;
+    }
+
+    .bottom-item{
+        font-size:9px;
+    }
+
+}
+
+/* ================= PAISAGEM CELULAR ================= */
+
+@media(max-height:500px) and (orientation:landscape){
+
+    .app{
+        max-width:1000px;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .industries{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+}
+
+/* ================= REDUZIR MOVIMENTO ================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *{
+        scroll-behavior:auto!important;
+        transition:none!important;
+    }
+
 }
 
 </style>
@@ -325,926 +712,851 @@ select:focus{
 
 <div class="app">
 
-    <header class="header">
+<header class="header">
 
+    <div>
         <div class="logo">
             META<span>+</span>
         </div>
 
-        <select id="mode" class="mode">
-            <option value="supervisor">👨‍💼 Supervisor</option>
-            <option value="vendedor">👤 Vendedor</option>
+        <div class="subtitle">
+            Olá, João 👋 • seu desempenho
+        </div>
+    </div>
+
+    <div class="header-actions">
+
+        <button class="icon-btn">
+            🔔
+        </button>
+
+        <select class="mode" id="mode">
+            <option value="vendedor">
+                👤 Vendedor
+            </option>
+
+            <option value="supervisor">
+                👨‍💼 Supervisor
+            </option>
         </select>
 
-    </header>
+    </div>
 
-    <!-- SUPERVISOR -->
+</header>
 
-    <section id="supervisor">
 
-        <div class="card">
+<!-- ================= HERO ================= -->
 
-            <div class="card-title">
-                VISÃO GERAL DA EQUIPE
+<section class="hero">
+
+    <div class="hero-grid">
+
+        <div>
+
+            <div class="eyebrow">
+                Desempenho geral
             </div>
 
-            <div class="grid3">
-
-                <div>
-                    <div class="card-title">Meta total</div>
-                    <div class="big-number" id="totalMeta">
-                        R$ 0
-                    </div>
-                </div>
-
-                <div>
-                    <div class="card-title">Realizado</div>
-                    <div class="big-number green" id="totalRealizado">
-                        R$ 0
-                    </div>
-                </div>
-
-                <div>
-                    <div class="card-title">Resultado</div>
-                    <div class="big-number" id="totalPercent">
-                        0%
-                    </div>
-                </div>
-
+            <div class="hero-title">
+                78%
             </div>
 
-            <div class="progress">
-                <div id="totalBar" class="progress-bar"></div>
-            </div>
-
-            <div id="totalStatus" class="alert">
-                Carregando...
+            <div class="hero-text">
+                Você está no caminho certo para
+                fechar seus objetivos.
             </div>
 
         </div>
 
 
-        <!-- INDUSTRIAS -->
+        <div>
 
-        <div class="card">
+            <div class="circle">
 
-            <div class="card-title">
-                DESEMPENHO POR INDÚSTRIA
-            </div>
-
-            <div id="industries" class="grid"></div>
-
-        </div>
-
-
-        <!-- RANKING -->
-
-        <div class="card">
-
-            <div class="card-title">
-                🏆 RANKING DA EQUIPE
-            </div>
-
-            <div id="ranking"></div>
-
-        </div>
-
-
-        <!-- ALIMENTAR -->
-
-        <div class="card">
-
-            <div class="card-title">
-                ⚙️ ALIMENTAR RESULTADOS
-            </div>
-
-            <form id="resultForm">
-
-                <div class="form-grid">
-
-                    <div>
-                        <label>Vendedor</label>
-
-                        <select id="sellerInput"></select>
-                    </div>
-
-                    <div>
-                        <label>Indústria</label>
-
-                        <select id="industryInput"></select>
-                    </div>
-
-                    <div>
-                        <label>Meta</label>
-
-                        <input
-                            type="number"
-                            id="metaInput"
-                            min="0"
-                            step="0.01"
-                            placeholder="Ex: 10000"
-                            required
-                        >
-                    </div>
-
-                    <div>
-                        <label>Realizado</label>
-
-                        <input
-                            type="number"
-                            id="realizadoInput"
-                            min="0"
-                            step="0.01"
-                            placeholder="Ex: 7500"
-                            required
-                        >
-                    </div>
-
-                </div>
-
-                <br>
-
-                <button class="btn" type="submit">
-                    + Salvar resultado
-                </button>
-
-            </form>
-
-        </div>
-
-    </section>
-
-
-    <!-- VENDEDOR -->
-
-    <section id="vendedor" class="hidden">
-
-        <div class="card">
-
-            <div class="card-title">
-                MEU DESEMPENHO
-            </div>
-
-            <div class="grid3">
-
-                <div>
-                    <div class="card-title">Minha meta</div>
-                    <div class="big-number" id="myMeta">
-                        R$ 0
-                    </div>
-                </div>
-
-                <div>
-                    <div class="card-title">Realizado</div>
-                    <div class="big-number green" id="myRealizado">
-                        R$ 0
-                    </div>
-                </div>
-
-                <div>
-                    <div class="card-title">Conclusão</div>
-                    <div class="big-number" id="myPercent">
-                        0%
-                    </div>
+                <div class="circle-number">
+                    78%
                 </div>
 
             </div>
 
-            <div class="progress">
-                <div id="myBar" class="progress-bar"></div>
-            </div>
-
-            <div id="myStatus" class="alert">
-                Carregando...
-            </div>
-
         </div>
 
+    </div>
 
-        <div class="card">
 
-            <div class="card-title">
-                🏭 MINHAS INDÚSTRIAS
-            </div>
+    <div class="progress">
 
-            <div id="myIndustries" class="grid"></div>
-
+        <div
+            class="progress-bar"
+            style="width:78%">
         </div>
 
+    </div>
 
-        <div class="card">
 
-            <div class="card-title">
-                🏆 RANKING
-            </div>
+    <div class="hero-footer">
 
-            <p style="color:#8fa99d;font-size:13px;margin-bottom:15px;">
-                Os valores dos outros vendedores são privados.
-                Você vê apenas o percentual de conclusão.
-            </p>
+        <span>
+            Realizado:
+            <strong>R$ 312.000</strong>
+        </span>
 
-            <div id="sellerRanking"></div>
+        <span>
+            Meta:
+            <strong>R$ 400.000</strong>
+        </span>
 
+    </div>
+
+</section>
+
+
+<!-- ================= ESTATÍSTICAS ================= -->
+
+<section class="stats">
+
+    <div class="stat">
+
+        <div class="stat-label">
+            DIAS RESTANTES
         </div>
 
-    </section>
+        <div class="stat-value">
+            8 dias
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-label">
+            FALTA
+        </div>
+
+        <div class="stat-value red">
+            R$ 88 mil
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-label">
+            NECESSÁRIO / DIA
+        </div>
+
+        <div class="stat-value green">
+            R$ 11 mil
+        </div>
+
+    </div>
+
+
+    <div class="stat">
+
+        <div class="stat-label">
+            RITMO ATUAL
+        </div>
+
+        <div class="stat-value green">
+            NO RITMO
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INDUSTRIAS ================= -->
+
+<div class="section-header">
+
+    <div class="section-title">
+        🏭 Minhas indústrias
+    </div>
+
+    <div class="section-info">
+        8 dias restantes
+    </div>
 
 </div>
 
 
-<script>
-
-/*
-=========================================
-META+
-Protótipo inicial
-=========================================
-*/
-
-const sellers = [
-    "João",
-    "Carlos",
-    "Pedro",
-    "Lucas",
-    "Rafael"
-];
+<section class="industries">
 
-const industries = [
-    "J&J",
-    "BeautyColor",
-    "Hypera",
-    "Linea",
-    "Ducoco"
-];
 
+<!-- J&J -->
 
-/*
-=========================================
-DADOS
-=========================================
-*/
+<div class="industry">
 
-let data = {
+    <div class="industry-top">
 
-    João: {
-        "J&J":        {meta:100000, realizado:87000},
-        "BeautyColor":{meta:50000, realizado:36000},
-        "Hypera":     {meta:70000, realizado:40000},
-        "Linea":      {meta:60000, realizado:55000},
-        "Ducoco":     {meta:30000, realizado:25000}
-    },
+        <div class="industry-name">
+            J&J
+        </div>
 
-    Carlos: {
-        "J&J":        {meta:90000, realizado:85000},
-        "BeautyColor":{meta:45000, realizado:42000},
-        "Hypera":     {meta:60000, realizado:52000},
-        "Linea":      {meta:50000, realizado:47000},
-        "Ducoco":     {meta:25000, realizado:23000}
-    },
+        <div class="industry-percent green">
+            87%
+        </div>
 
-    Pedro: {
-        "J&J":        {meta:110000, realizado:88000},
-        "BeautyColor":{meta:50000, realizado:39000},
-        "Hypera":     {meta:70000, realizado:44000},
-        "Linea":      {meta:60000, realizado:50000},
-        "Ducoco":     {meta:30000, realizado:22000}
-    },
+    </div>
 
-    Lucas: {
-        "J&J":        {meta:95000, realizado:70000},
-        "BeautyColor":{meta:50000, realizado:35000},
-        "Hypera":     {meta:65000, realizado:37000},
-        "Linea":      {meta:55000, realizado:42000},
-        "Ducoco":     {meta:25000, realizado:18000}
-    },
 
-    Rafael: {
-        "J&J":        {meta:100000, realizado:92000},
-        "BeautyColor":{meta:50000, realizado:40000},
-        "Hypera":     {meta:65000, realizado:48000},
-        "Linea":      {meta:55000, realizado:49000},
-        "Ducoco":     {meta:30000, realizado:24000}
-    }
+    <div class="mini-progress">
 
-};
+        <div
+            class="mini-fill"
+            style="width:87%">
+        </div>
 
+    </div>
 
-/*
-=========================================
-UTILIDADES
-=========================================
-*/
 
-function money(value){
+    <div class="money-line">
 
-    return value.toLocaleString("pt-BR",{
-        style:"currency",
-        currency:"BRL",
-        maximumFractionDigits:0
-    });
+        <span>
+            Realizado:
+            <strong>R$ 87.000</strong>
+        </span>
 
-}
+        <span>
+            Meta:
+            <strong>R$ 100.000</strong>
+        </span>
 
+    </div>
 
-function percent(meta,realizado){
 
-    if(!meta || meta <= 0) return 0;
+    <div class="industry-divider"></div>
 
-    return Math.min(
-        999,
-        Math.round((realizado/meta)*100)
-    );
 
-}
+    <div class="daily">
 
+        <div>
 
-function statusClass(p){
-
-    if(p >= 90) return "green";
-
-    if(p >= 75) return "yellow";
-
-    return "red";
-
-}
-
-
-function statusText(p){
-
-    if(p >= 100){
-        return "🏆 Meta atingida!";
-    }
-
-    if(p >= 90){
-        return "🔥 Quase lá!";
-    }
-
-    if(p >= 75){
-        return "🟡 No caminho — continue acelerando.";
-    }
-
-    return "🔴 Atenção — precisa acelerar.";
-}
-
-
-/*
-=========================================
-SELECTS
-=========================================
-*/
-
-function populateSelects(){
-
-    const sellerSelect =
-        document.getElementById("sellerInput");
-
-    const industrySelect =
-        document.getElementById("industryInput");
-
-    sellerSelect.innerHTML = "";
-
-    industrySelect.innerHTML = "";
-
-    sellers.forEach(seller => {
-
-        sellerSelect.innerHTML += `
-            <option value="${seller}">
-                ${seller}
-            </option>
-        `;
-
-    });
-
-
-    industries.forEach(industry => {
-
-        industrySelect.innerHTML += `
-            <option value="${industry}">
-                ${industry}
-            </option>
-        `;
-
-    });
-
-}
-
-
-/*
-=========================================
-TOTAIS
-=========================================
-*/
-
-function getSellerTotal(seller){
-
-    let meta = 0;
-    let realizado = 0;
-
-    industries.forEach(industry => {
-
-        const item =
-            data[seller][industry];
-
-        meta += item.meta;
-        realizado += item.realizado;
-
-    });
-
-    return {
-        meta,
-        realizado,
-        percent:percent(meta,realizado)
-    };
-
-}
-
-
-function getTeamTotal(){
-
-    let meta = 0;
-    let realizado = 0;
-
-    sellers.forEach(seller => {
-
-        const total =
-            getSellerTotal(seller);
-
-        meta += total.meta;
-        realizado += total.realizado;
-
-    });
-
-    return {
-        meta,
-        realizado,
-        percent:percent(meta,realizado)
-    };
-
-}
-
-
-/*
-=========================================
-SUPERVISOR
-=========================================
-*/
-
-function renderSupervisor(){
-
-    const team =
-        getTeamTotal();
-
-
-    document.getElementById("totalMeta")
-        .textContent = money(team.meta);
-
-    document.getElementById("totalRealizado")
-        .textContent = money(team.realizado);
-
-    document.getElementById("totalPercent")
-        .textContent = team.percent + "%";
-
-
-    document.getElementById("totalBar")
-        .style.width =
-        Math.min(team.percent,100) + "%";
-
-
-    document.getElementById("totalStatus")
-        .textContent =
-        statusText(team.percent);
-
-
-    /*
-    INDUSTRIAS
-    */
-
-    const container =
-        document.getElementById("industries");
-
-    container.innerHTML = "";
-
-
-    industries.forEach(industry => {
-
-        let meta = 0;
-        let realizado = 0;
-
-        sellers.forEach(seller => {
-
-            meta += data[seller][industry].meta;
-
-            realizado += data[seller][industry].realizado;
-
-        });
-
-
-        const p =
-            percent(meta,realizado);
-
-
-        container.innerHTML += `
-
-            <div class="industry">
-
-                <div class="industry-header">
-
-                    <div class="industry-name">
-                        🏭 ${industry}
-                    </div>
-
-                    <div class="percent ${statusClass(p)}">
-                        ${p}%
-                    </div>
-
-                </div>
-
-                <div class="progress">
-
-                    <div
-                        class="progress-bar"
-                        style="width:${Math.min(p,100)}%">
-                    </div>
-
-                </div>
-
-                <div style="font-size:12px;color:#8fa99d">
-
-                    ${money(realizado)}
-                    /
-                    ${money(meta)}
-
-                </div>
-
+            <div class="daily-label">
+                Falta
             </div>
 
-        `;
-
-    });
-
-
-    /*
-    RANKING
-    */
-
-    const ranking =
-        sellers
-            .map(seller => {
-
-                const total =
-                    getSellerTotal(seller);
-
-                return {
-                    seller,
-                    percent:total.percent
-                };
-
-            })
-            .sort((a,b) =>
-                b.percent-a.percent
-            );
-
-
-    const rankingContainer =
-        document.getElementById("ranking");
-
-    rankingContainer.innerHTML = "";
-
-
-    ranking.forEach((item,index) => {
-
-        rankingContainer.innerHTML += `
-
-            <div class="rank">
-
-                <div class="position">
-                    ${index+1}º
-                </div>
-
-                <div class="avatar">
-                    ${item.seller.charAt(0)}
-                </div>
-
-                <div class="rank-info">
-
-                    <div class="rank-name">
-                        ${item.seller}
-                    </div>
-
-                    <div class="rank-status">
-                        ${statusText(item.percent)}
-                    </div>
-
-                </div>
-
-                <strong class="${statusClass(item.percent)}">
-                    ${item.percent}%
-                </strong>
-
+            <div class="daily-value">
+                R$ 13.000
             </div>
 
-        `;
+        </div>
 
-    });
+        <div>
 
-}
-
-
-/*
-=========================================
-VENDEDOR
-=========================================
-*/
-
-function renderSeller(){
-
-    const seller =
-        document.getElementById("sellerInput").value
-        || "João";
-
-
-    const total =
-        getSellerTotal(seller);
-
-
-    document.getElementById("myMeta")
-        .textContent = money(total.meta);
-
-    document.getElementById("myRealizado")
-        .textContent = money(total.realizado);
-
-    document.getElementById("myPercent")
-        .textContent = total.percent + "%";
-
-
-    document.getElementById("myBar")
-        .style.width =
-        Math.min(total.percent,100) + "%";
-
-
-    document.getElementById("myStatus")
-        .textContent =
-        statusText(total.percent);
-
-
-    /*
-    INDÚSTRIAS DO VENDEDOR
-    */
-
-    const container =
-        document.getElementById("myIndustries");
-
-    container.innerHTML = "";
-
-
-    industries.forEach(industry => {
-
-        const item =
-            data[seller][industry];
-
-        const p =
-            percent(item.meta,item.realizado);
-
-
-        container.innerHTML += `
-
-            <div class="industry">
-
-                <div class="industry-header">
-
-                    <div class="industry-name">
-                        🏭 ${industry}
-                    </div>
-
-                    <div class="percent ${statusClass(p)}">
-                        ${p}%
-                    </div>
-
-                </div>
-
-                <div class="progress">
-
-                    <div
-                        class="progress-bar"
-                        style="width:${Math.min(p,100)}%">
-                    </div>
-
-                </div>
-
-                <div style="font-size:12px;color:#8fa99d">
-
-                    Meu resultado:
-                    ${money(item.realizado)}
-
-                </div>
-
+            <div class="daily-label">
+                Meta por dia
             </div>
 
-        `;
-
-    });
-
-
-    /*
-    RANKING SEM VALORES
-    */
-
-    const ranking =
-        sellers
-            .map(s => {
-
-                const total =
-                    getSellerTotal(s);
-
-                return {
-                    seller:s,
-                    percent:total.percent
-                };
-
-            })
-            .sort((a,b) =>
-                b.percent-a.percent
-            );
-
-
-    const rankingContainer =
-        document.getElementById("sellerRanking");
-
-    rankingContainer.innerHTML = "";
-
-
-    ranking.forEach((item,index) => {
-
-        rankingContainer.innerHTML += `
-
-            <div class="rank">
-
-                <div class="position">
-                    ${index+1}º
-                </div>
-
-                <div class="avatar">
-                    ${item.seller.charAt(0)}
-                </div>
-
-                <div class="rank-info">
-
-                    <div class="rank-name">
-                        ${item.seller}
-                    </div>
-
-                    <div class="rank-status">
-                        ${statusText(item.percent)}
-                    </div>
-
-                </div>
-
-                <strong class="${statusClass(item.percent)}">
-                    ${item.percent}%
-                </strong>
-
+            <div class="daily-value">
+                R$ 1.625
             </div>
 
-        `;
+        </div>
 
-    });
-
-}
+    </div>
 
 
-/*
-=========================================
-MODO
-=========================================
-*/
+    <div class="days">
+        8 dias restantes
+    </div>
 
-document
-.getElementById("mode")
-.addEventListener("change",function(){
-
-    const mode =
-        this.value;
+</div>
 
 
-    if(mode === "supervisor"){
+<!-- BEAUTYCOLOR -->
 
-        document
-        .getElementById("supervisor")
-        .classList.remove("hidden");
+<div class="industry">
 
-        document
-        .getElementById("vendedor")
-        .classList.add("hidden");
+    <div class="industry-top">
 
-    }else{
+        <div class="industry-name">
+            BeautyColor
+        </div>
 
-        document
-        .getElementById("supervisor")
-        .classList.add("hidden");
+        <div class="industry-percent yellow">
+            72%
+        </div>
 
-        document
-        .getElementById("vendedor")
-        .classList.remove("hidden");
-
-        renderSeller();
-
-    }
-
-});
+    </div>
 
 
-/*
-=========================================
-ATUALIZAR VENDEDOR
-=========================================
-*/
+    <div class="mini-progress">
 
-document
-.getElementById("sellerInput")
-.addEventListener("change",function(){
+        <div
+            class="mini-fill"
+            style="width:72%">
+        </div>
 
-    renderSeller();
-
-});
+    </div>
 
 
-/*
-=========================================
-SALVAR RESULTADO
-=========================================
-*/
+    <div class="money-line">
 
-document
-.getElementById("resultForm")
-.addEventListener("submit",function(event){
+        <span>
+            Realizado:
+            <strong>R$ 36.000</strong>
+        </span>
 
-    event.preventDefault();
+        <span>
+            Meta:
+            <strong>R$ 50.000</strong>
+        </span>
 
-
-    const seller =
-        document.getElementById("sellerInput").value;
-
-    const industry =
-        document.getElementById("industryInput").value;
-
-    const meta =
-        Number(
-            document.getElementById("metaInput").value
-        );
-
-    const realizado =
-        Number(
-            document.getElementById("realizadoInput").value
-        );
+    </div>
 
 
-    if(meta < 0 || realizado < 0){
-
-        alert("Digite valores válidos.");
-
-        return;
-
-    }
+    <div class="industry-divider"></div>
 
 
-    data[seller][industry] = {
+    <div class="daily">
 
-        meta:meta,
+        <div>
 
-        realizado:realizado
+            <div class="daily-label">
+                Falta
+            </div>
 
-    };
+            <div class="daily-value yellow">
+                R$ 14.000
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="daily-label">
+                Meta por dia
+            </div>
+
+            <div class="daily-value yellow">
+                R$ 1.750
+            </div>
+
+        </div>
+
+    </div>
 
 
-    document
-    .getElementById("metaInput")
-    .value = "";
+    <div class="days">
+        8 dias restantes
+    </div>
 
-    document
-    .getElementById("realizadoInput")
-    .value = "";
+</div>
 
 
-    renderSupervisor();
+<!-- HYPERA -->
 
-    alert(
-        "Resultado atualizado com sucesso!"
-    );
+<div class="industry">
 
-});
+    <div class="industry-top">
+
+        <div class="industry-name">
+            Hypera
+        </div>
+
+        <div class="industry-percent yellow">
+            64%
+        </div>
+
+    </div>
 
 
-/*
-=========================================
-INICIAR
-=========================================
-*/
+    <div class="mini-progress">
 
-populateSelects();
+        <div
+            class="mini-fill"
+            style="width:64%">
+        </div>
 
-renderSupervisor();
+    </div>
 
-</script>
+
+    <div class="money-line">
+
+        <span>
+            Realizado:
+            <strong>R$ 44.000</strong>
+        </span>
+
+        <span>
+            Meta:
+            <strong>R$ 70.000</strong>
+        </span>
+
+    </div>
+
+
+    <div class="industry-divider"></div>
+
+
+    <div class="daily">
+
+        <div>
+
+            <div class="daily-label">
+                Falta
+            </div>
+
+            <div class="daily-value yellow">
+                R$ 26.000
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="daily-label">
+                Meta por dia
+            </div>
+
+            <div class="daily-value yellow">
+                R$ 3.250
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="days">
+        8 dias restantes
+    </div>
+
+</div>
+
+
+<!-- LINEA -->
+
+<div class="industry">
+
+    <div class="industry-top">
+
+        <div class="industry-name">
+            Linea
+        </div>
+
+        <div class="industry-percent green">
+            91%
+        </div>
+
+    </div>
+
+
+    <div class="mini-progress">
+
+        <div
+            class="mini-fill"
+            style="width:91%">
+        </div>
+
+    </div>
+
+
+    <div class="money-line">
+
+        <span>
+            Realizado:
+            <strong>R$ 55.000</strong>
+        </span>
+
+        <span>
+            Meta:
+            <strong>R$ 60.000</strong>
+        </span>
+
+    </div>
+
+
+    <div class="industry-divider"></div>
+
+
+    <div class="daily">
+
+        <div>
+
+            <div class="daily-label">
+                Falta
+            </div>
+
+            <div class="daily-value">
+                R$ 5.000
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="daily-label">
+                Meta por dia
+            </div>
+
+            <div class="daily-value">
+                R$ 625
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="days">
+        8 dias restantes
+    </div>
+
+</div>
+
+
+<!-- DUCOCO -->
+
+<div class="industry">
+
+    <div class="industry-top">
+
+        <div class="industry-name">
+            Ducoco
+        </div>
+
+        <div class="industry-percent green">
+            83%
+        </div>
+
+    </div>
+
+
+    <div class="mini-progress">
+
+        <div
+            class="mini-fill"
+            style="width:83%">
+        </div>
+
+    </div>
+
+
+    <div class="money-line">
+
+        <span>
+            Realizado:
+            <strong>R$ 25.000</strong>
+        </span>
+
+        <span>
+            Meta:
+            <strong>R$ 30.000</strong>
+        </span>
+
+    </div>
+
+
+    <div class="industry-divider"></div>
+
+
+    <div class="daily">
+
+        <div>
+
+            <div class="daily-label">
+                Falta
+            </div>
+
+            <div class="daily-value">
+                R$ 5.000
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="daily-label">
+                Meta por dia
+            </div>
+
+            <div class="daily-value">
+                R$ 625
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="days">
+        8 dias restantes
+    </div>
+
+</div>
+
+
+<!-- EMBARE -->
+
+<div class="industry">
+
+    <div class="industry-top">
+
+        <div class="industry-name">
+            Embaré
+        </div>
+
+        <div class="industry-percent yellow">
+            58%
+        </div>
+
+    </div>
+
+
+    <div class="mini-progress">
+
+        <div
+            class="mini-fill"
+            style="width:58%">
+        </div>
+
+    </div>
+
+
+    <div class="money-line">
+
+        <span>
+            Realizado:
+            <strong>R$ 23.000</strong>
+        </span>
+
+        <span>
+            Meta:
+            <strong>R$ 40.000</strong>
+        </span>
+
+    </div>
+
+
+    <div class="industry-divider"></div>
+
+
+    <div class="daily">
+
+        <div>
+
+            <div class="daily-label">
+                Falta
+            </div>
+
+            <div class="daily-value red">
+                R$ 17.000
+            </div>
+
+        </div>
+
+        <div>
+
+            <div class="daily-label">
+                Meta por dia
+            </div>
+
+            <div class="daily-value red">
+                R$ 2.125
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="days">
+        8 dias restantes
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= RADAR ================= -->
+
+<section class="radar">
+
+    <div class="radar-icon">
+        🎯
+    </div>
+
+    <div>
+
+        <div class="eyebrow">
+            Radar da Meta
+        </div>
+
+        <div class="radar-title">
+            VOCÊ ESTÁ NO RITMO
+        </div>
+
+        <div class="radar-text">
+            Seu ritmo atual permite alcançar
+            o objetivo. Continue acelerando
+            nas indústrias que estão abaixo.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= RANKING ================= -->
+
+<div class="section-header">
+
+    <div class="section-title">
+        🏆 Ranking da equipe
+    </div>
+
+    <div class="section-info">
+        Percentual da própria meta
+    </div>
+
+</div>
+
+
+<section class="ranking">
+
+
+<div class="person">
+
+    <div class="avatar">
+        C
+    </div>
+
+    <div class="person-info">
+
+        <div class="person-name">
+            Carlos
+        </div>
+
+        <div class="person-status">
+            Quase batendo o objetivo
+        </div>
+
+    </div>
+
+    <div class="person-percent green">
+        96%
+    </div>
+
+</div>
+
+
+<div class="person">
+
+    <div class="avatar">
+        J
+    </div>
+
+    <div class="person-info">
+
+        <div class="person-name">
+            João (Você)
+        </div>
+
+        <div class="person-status">
+            Muito bem, continue assim!
+        </div>
+
+    </div>
+
+    <div class="person-percent green">
+        91%
+    </div>
+
+</div>
+
+
+<div class="person">
+
+    <div class="avatar">
+        P
+    </div>
+
+    <div class="person-info">
+
+        <div class="person-name">
+            Pedro
+        </div>
+
+        <div class="person-status">
+            No caminho certo
+        </div>
+
+    </div>
+
+    <div class="person-percent green">
+        87%
+    </div>
+
+</div>
+
+
+<div class="person">
+
+    <div class="avatar">
+        L
+    </div>
+
+    <div class="person-info">
+
+        <div class="person-name">
+            Lucas
+        </div>
+
+        <div class="person-status">
+            Precisa acelerar
+        </div>
+
+    </div>
+
+    <div class="person-percent yellow">
+        76%
+    </div>
+
+</div>
+
+
+</section>
+
+
+<!-- ================= BOTTOM ================= -->
+
+<nav class="bottom">
+
+    <div class="bottom-item active">
+        <b>⌂</b>
+        Início
+    </div>
+
+    <div class="bottom-item">
+        <b>🏭</b>
+        Indústrias
+    </div>
+
+    <div class="bottom-item">
+        <b>＋</b>
+        Lançar
+    </div>
+
+    <div class="bottom-item">
+        <b>🏆</b>
+        Ranking
+    </div>
+
+    <div class="bottom-item">
+        <b>♙</b>
+        Perfil
+    </div>
+
+</nav>
+
+</div>
 
 </body>
 </html>
