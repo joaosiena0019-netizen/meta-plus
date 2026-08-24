@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<meta name="theme-color" content="#06100b">
 
 <title>META+</title>
 
 <style>
+
+/* =========================================================
+   META+
+   SISTEMA DE METAS COMERCIAIS
+   ========================================================= */
 
 *{
     box-sizing:border-box;
@@ -15,722 +28,2094 @@
 }
 
 :root{
-    --bg:#06110c;
-    --card:#0b1c14;
-    --card2:#10251b;
-    --border:#1d3d2d;
-    --green:#35e982;
-    --green2:#20c96b;
+
+    --bg:#030806;
+
+    --sidebar:#050c08;
+
+    --card:#07140d;
+
+    --card2:#0b1d13;
+
+    --border:#193a28;
+
+    --border2:#28583d;
+
+    --green:#27e878;
+
+    --green2:#0fc968;
+
+    --green3:#8affb7;
+
+    --yellow:#ffc928;
+
+    --orange:#ff9f1c;
+
+    --red:#ff4545;
+
+    --blue:#27b6ff;
+
+    --white:#ffffff;
+
     --text:#f5f8f6;
-    --muted:#8ca69a;
-    --yellow:#ffc94d;
-    --red:#ff6868;
+
+    --muted:#81998d;
+
+    --muted2:#5d7569;
 }
 
 html{
+
     width:100%;
+
     min-height:100%;
+
     background:var(--bg);
+
 }
 
 body{
+
     width:100%;
+
     min-height:100vh;
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Arial,
-        sans-serif;
+
     background:
+
         radial-gradient(
-            circle at 50% -10%,
-            #123c28 0%,
-            #06110c 42%
-        );
+            circle at 65% -10%,
+            rgba(28,110,66,.32),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 100% 50%,
+            rgba(13,76,45,.15),
+            transparent 35%
+        ),
+
+        #030806;
+
     color:var(--text);
+
+    font-family:
+
+        Inter,
+
+        -apple-system,
+
+        BlinkMacSystemFont,
+
+        "Segoe UI",
+
+        Roboto,
+
+        Arial,
+
+        sans-serif;
+
 }
 
 button,
 input,
 select{
+
     font:inherit;
+
 }
 
 button{
+
     cursor:pointer;
+
 }
+
+/* =========================================================
+   LAYOUT PRINCIPAL
+   ========================================================= */
 
 .app{
+
+    display:flex;
+
     width:100%;
-    max-width:1180px;
-    margin:auto;
-    padding:
-        max(18px, env(safe-area-inset-top))
-        max(16px, env(safe-area-inset-right))
-        max(28px, env(safe-area-inset-bottom))
-        max(16px, env(safe-area-inset-left));
+
+    min-height:100vh;
+
 }
 
-/* ================= HEADER ================= */
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
 
-.header{
+.sidebar{
+
+    width:245px;
+
+    min-height:100vh;
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    bottom:0;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #06100b,
+            #030806
+        );
+
+    border-right:1px solid #12291d;
+
+    padding:25px 16px;
+
     display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    margin-bottom:22px;
+
+    flex-direction:column;
+
+    z-index:50;
+
 }
 
 .logo{
-    font-size:clamp(25px,4vw,34px);
-    font-weight:900;
-    letter-spacing:-1.5px;
+
+    font-size:31px;
+
+    font-weight:1000;
+
+    letter-spacing:-2px;
+
+    padding:5px 12px 30px;
+
 }
 
 .logo span{
+
     color:var(--green);
+
 }
 
-.subtitle{
-    color:var(--muted);
-    font-size:13px;
-    margin-top:3px;
-}
+.nav{
 
-.header-actions{
     display:flex;
-    align-items:center;
-    gap:9px;
+
+    flex-direction:column;
+
+    gap:5px;
+
 }
 
-.icon-btn{
-    width:44px;
-    height:44px;
-    border-radius:14px;
-    border:1px solid var(--border);
-    background:#0c2118;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:18px;
-}
+.nav-item{
 
-.mode{
-    border:1px solid var(--border);
-    background:#0c2118;
-    color:white;
-    padding:11px 13px;
-    border-radius:12px;
-    outline:none;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-    background:
-        linear-gradient(
-            135deg,
-            rgba(22,75,49,.95),
-            rgba(8,30,20,.98)
-        );
-    border:1px solid #28563f;
-    border-radius:24px;
-    padding:clamp(20px,4vw,30px);
-    position:relative;
-    overflow:hidden;
-}
-
-.hero:after{
-    content:"";
-    position:absolute;
-    width:230px;
-    height:230px;
-    border-radius:50%;
-    right:-120px;
-    top:-130px;
-    background:rgba(53,233,130,.08);
-}
-
-.hero-grid{
-    display:grid;
-    grid-template-columns:1fr 1.5fr;
-    gap:25px;
-    align-items:center;
-}
-
-.eyebrow{
-    color:#91ada0;
-    font-size:12px;
-    font-weight:700;
-    text-transform:uppercase;
-    letter-spacing:1.4px;
-}
-
-.hero-title{
-    font-size:clamp(40px,8vw,70px);
-    line-height:1;
-    margin:8px 0;
-    font-weight:900;
-}
-
-.hero-text{
-    color:#a7beb4;
-    font-size:14px;
-}
-
-.circle{
-    width:150px;
-    height:150px;
-    margin:auto;
-    border-radius:50%;
-    display:grid;
-    place-items:center;
-    position:relative;
-    background:
-        radial-gradient(
-            circle,
-            #0b2117 56%,
-            transparent 57%
-        ),
-        conic-gradient(
-            var(--green) 0 78%,
-            #1d3b2d 78% 100%
-        );
-}
-
-.circle-number{
-    font-size:34px;
-    font-weight:900;
-}
-
-.progress{
-    height:12px;
     width:100%;
-    background:#183228;
-    border-radius:20px;
-    overflow:hidden;
-    margin:18px 0 10px;
+
+    border:1px solid transparent;
+
+    background:transparent;
+
+    color:#9aacA2;
+
+    padding:14px 15px;
+
+    border-radius:13px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    text-align:left;
+
+    transition:.2s;
+
 }
 
-.progress-bar{
-    height:100%;
-    border-radius:20px;
+.nav-item:hover{
+
+    background:#0b2115;
+
+    color:white;
+
+}
+
+.nav-item.active{
+
     background:
+
         linear-gradient(
             90deg,
-            var(--green2),
-            #74f2a7
+            #083b1d,
+            #0a2818
         );
-    transition:.3s;
+
+    border-color:#13813f;
+
+    color:#62f39a;
+
+    box-shadow:
+        0 0 25px rgba(39,232,120,.08);
+
 }
 
-.hero-footer{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    color:#b3c8bf;
-    font-size:13px;
-    flex-wrap:wrap;
-}
+.nav-icon{
 
-/* ================= STATS ================= */
+    width:23px;
 
-.stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
-    margin:15px 0;
-}
+    text-align:center;
 
-.stat{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:17px;
-    min-width:0;
-}
-
-.stat-label{
-    color:var(--muted);
-    font-size:12px;
-}
-
-.stat-value{
-    font-size:clamp(18px,3vw,25px);
-    font-weight:900;
-    margin-top:7px;
-    overflow-wrap:anywhere;
-}
-
-.green{
-    color:var(--green);
-}
-
-.yellow{
-    color:var(--yellow);
-}
-
-.red{
-    color:var(--red);
-}
-
-/* ================= SECTION ================= */
-
-.section-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    margin:25px 0 12px;
-}
-
-.section-title{
     font-size:18px;
-    font-weight:900;
+
 }
 
-.section-info{
-    color:var(--muted);
-    font-size:12px;
+.sidebar-bottom{
+
+    margin-top:auto;
+
+    border-top:1px solid #143021;
+
+    padding-top:18px;
+
 }
 
-/* ================= INDUSTRIAS ================= */
+.user-mini{
 
-.industries{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-}
-
-.industry{
-    background:
-        linear-gradient(
-            145deg,
-            #0d241a,
-            #091811
-        );
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:17px;
-    min-width:0;
-}
-
-.industry-top{
     display:flex;
-    justify-content:space-between;
+
     align-items:center;
+
     gap:10px;
-}
 
-.industry-name{
-    font-size:16px;
-    font-weight:900;
-}
+    padding:10px;
 
-.industry-percent{
-    font-size:20px;
-    font-weight:900;
-}
-
-.mini-progress{
-    height:8px;
-    background:#1a3529;
-    border-radius:20px;
-    margin:14px 0;
-    overflow:hidden;
-}
-
-.mini-fill{
-    height:100%;
-    border-radius:20px;
-    background:var(--green);
-}
-
-.money-line{
-    display:flex;
-    justify-content:space-between;
-    gap:8px;
-    font-size:12px;
-    color:var(--muted);
-    flex-wrap:wrap;
-}
-
-.industry-divider{
-    height:1px;
-    background:#1a3528;
-    margin:14px 0;
-}
-
-.daily{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:10px;
-}
-
-.daily-label{
-    color:var(--muted);
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:.5px;
-}
-
-.daily-value{
-    color:var(--green);
-    font-size:19px;
-    font-weight:900;
-    margin-top:4px;
-}
-
-.days{
-    color:#9cb4a9;
-    font-size:11px;
-    text-align:right;
-}
-
-/* ================= RADAR ================= */
-
-.radar{
-    margin-top:15px;
-    padding:20px;
-    background:#0b2117;
-    border:1px solid #24543b;
-    border-radius:20px;
-    display:flex;
-    align-items:center;
-    gap:16px;
-}
-
-.radar-icon{
-    flex:none;
-    width:58px;
-    height:58px;
-    border-radius:50%;
-    border:2px solid var(--green);
-    display:grid;
-    place-items:center;
-    font-size:25px;
-    box-shadow:0 0 0 8px rgba(53,233,130,.05);
-}
-
-.radar-title{
-    color:var(--green);
-    font-size:18px;
-    font-weight:900;
-    margin:4px 0;
-}
-
-.radar-text{
-    color:var(--muted);
-    font-size:13px;
-    line-height:1.5;
-}
-
-/* ================= RANKING ================= */
-
-.ranking{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.person{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:14px;
-    border-bottom:1px solid #183428;
-}
-
-.person:last-child{
-    border-bottom:0;
 }
 
 .avatar{
+
     width:42px;
+
     height:42px;
+
     border-radius:50%;
-    background:#17392a;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #1e6540,
+            #0c2819
+        );
+
+    border:1px solid #329b5d;
+
     display:grid;
+
     place-items:center;
+
     font-weight:900;
-    flex:none;
+
+    color:#b8ffcf;
+
 }
 
-.person-info{
-    flex:1;
-    min-width:0;
+.user-info strong{
+
+    display:block;
+
+    font-size:13px;
+
 }
 
-.person-name{
-    font-weight:800;
-}
+.user-info span{
 
-.person-status{
     color:var(--muted);
+
     font-size:11px;
-    margin-top:3px;
+
 }
 
-.person-percent{
-    font-size:19px;
-    font-weight:900;
+/* =========================================================
+   CONTEÚDO
+   ========================================================= */
+
+.main{
+
+    width:calc(100% - 245px);
+
+    margin-left:245px;
+
+    padding:22px;
+
+    min-width:0;
+
 }
 
-/* ================= BOTTOM ================= */
+.container{
 
-.bottom{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:5px;
-    background:#081610;
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:8px;
-    margin-top:20px;
+    max-width:1400px;
+
+    margin:auto;
+
 }
 
-.bottom-item{
-    min-height:58px;
-    border-radius:14px;
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header{
+
     display:flex;
-    flex-direction:column;
+
+    justify-content:space-between;
+
     align-items:center;
-    justify-content:center;
-    gap:4px;
-    color:#718c81;
-    font-size:10px;
+
+    gap:15px;
+
+    margin-bottom:18px;
+
 }
 
-.bottom-item b{
-    font-size:19px;
+.month-title{
+
+    font-size:clamp(20px,3vw,28px);
+
+    font-weight:900;
+
 }
 
-.bottom-item.active{
+.month-title span{
+
     color:var(--green);
-    background:#0f2b1e;
+
 }
 
-/* ================= DESKTOP ================= */
+.header-sub{
 
-@media(min-width:1100px){
+    color:var(--muted);
 
-    .app{
-        padding-left:24px;
-        padding-right:24px;
+    font-size:12px;
+
+    margin-top:4px;
+
+}
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.header-btn{
+
+    height:42px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+    background:#08170f;
+
+    color:white;
+
+    padding:0 13px;
+
+}
+
+.header-btn:hover{
+
+    border-color:var(--green);
+
+}
+
+.mode-select{
+
+    height:42px;
+
+    border-radius:12px;
+
+    border:1px solid var(--border);
+
+    background:#08170f;
+
+    color:white;
+
+    padding:0 12px;
+
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero-grid{
+
+    display:grid;
+
+    grid-template-columns:1.25fr 1fr;
+
+    gap:14px;
+
+}
+
+.hero{
+
+    min-width:0;
+
+    background:
+
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(40,220,112,.16),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            145deg,
+            #0b2517,
+            #06120b
+        );
+
+    border:1px solid #24613c;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+        inset 0 0 40px rgba(40,220,112,.025);
+
+}
+
+.hero-label{
+
+    color:#71d996;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+}
+
+.hero-content{
+
+    display:grid;
+
+    grid-template-columns:1fr 190px;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.hero-percent{
+
+    font-size:clamp(48px,7vw,80px);
+
+    line-height:.95;
+
+    font-weight:1000;
+
+    margin:10px 0;
+
+    letter-spacing:-4px;
+
+}
+
+.hero-description{
+
+    color:#93aa9e;
+
+    font-size:13px;
+
+}
+
+.hero-progress{
+
+    height:11px;
+
+    background:#173327;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin:20px 0 9px;
+
+}
+
+.hero-progress-fill{
+
+    height:100%;
+
+    width:78%;
+
+    border-radius:20px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #12c966,
+            #77ffa9
+        );
+
+    box-shadow:
+        0 0 15px rgba(39,232,120,.3);
+
+}
+
+.hero-values{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    color:#9eb6aa;
+
+    font-size:12px;
+
+}
+
+.hero-values strong{
+
+    color:white;
+
+}
+
+/* =========================================================
+   CÍRCULO
+   ========================================================= */
+
+.progress-circle{
+
+    width:160px;
+
+    height:160px;
+
+    border-radius:50%;
+
+    margin:auto;
+
+    display:grid;
+
+    place-items:center;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #07150d 57%,
+            transparent 58%
+        ),
+
+        conic-gradient(
+            var(--green) 0 78%,
+            #173629 78% 100%
+        );
+
+    box-shadow:
+        0 0 35px rgba(39,232,120,.12);
+
+}
+
+.circle-inside{
+
+    text-align:center;
+
+}
+
+.circle-inside strong{
+
+    display:block;
+
+    font-size:30px;
+
+}
+
+.circle-inside span{
+
+    color:var(--muted);
+
+    font-size:11px;
+
+}
+
+/* =========================================================
+   DIAS ÚTEIS
+   ========================================================= */
+
+.workdays{
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #091913,
+            #050d09
+        );
+
+    border:1px solid #193a29;
+
+    border-radius:22px;
+
+    padding:22px;
+
+}
+
+.workdays-title{
+
+    color:#7ef3a5;
+
+    font-weight:900;
+
+    font-size:13px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.7px;
+
+}
+
+.workdays-number{
+
+    display:flex;
+
+    align-items:baseline;
+
+    gap:8px;
+
+    margin:10px 0 15px;
+
+}
+
+.workdays-number strong{
+
+    font-size:48px;
+
+    line-height:1;
+
+    color:var(--green);
+
+}
+
+.workdays-number span{
+
+    color:#9aafa5;
+
+}
+
+.week{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    gap:5px;
+
+}
+
+.day{
+
+    border-radius:9px;
+
+    padding:8px 2px;
+
+    text-align:center;
+
+    border:1px solid #214331;
+
+    background:#08160e;
+
+}
+
+.day strong{
+
+    display:block;
+
+    font-size:9px;
+
+}
+
+.day span{
+
+    display:block;
+
+    font-size:13px;
+
+    margin-top:4px;
+
+}
+
+.day.weekend{
+
+    color:#ff6868;
+
+    border-color:#552525;
+
+    background:#1b0909;
+
+}
+
+.day.workday{
+
+    color:#59ef91;
+
+    border-color:#22623a;
+
+}
+
+.day.today{
+
+    box-shadow:
+        0 0 0 2px var(--green);
+
+}
+
+.workday-bottom{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+    margin-top:18px;
+
+}
+
+.work-stat{
+
+    border-top:1px solid #183426;
+
+    padding-top:12px;
+
+}
+
+.work-stat small{
+
+    color:var(--muted);
+
+    display:block;
+
+    font-size:10px;
+
+}
+
+.work-stat strong{
+
+    display:block;
+
+    font-size:19px;
+
+    margin-top:4px;
+
+}
+
+.red-text{
+
+    color:var(--red);
+
+}
+
+.green-text{
+
+    color:var(--green);
+
+}
+
+/* =========================================================
+   MINI STATS
+   ========================================================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:12px;
+
+    margin:14px 0 22px;
+
+}
+
+.stat{
+
+    background:#07140d;
+
+    border:1px solid #163426;
+
+    border-radius:16px;
+
+    padding:17px;
+
+    min-width:0;
+
+}
+
+.stat small{
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+
+}
+
+.stat strong{
+
+    display:block;
+
+    margin-top:7px;
+
+    font-size:21px;
+
+    overflow-wrap:anywhere;
+
+}
+
+/* =========================================================
+   SECTION HEADER
+   ========================================================= */
+
+.section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin:20px 0 12px;
+
+}
+
+.section-title{
+
+    font-size:18px;
+
+    font-weight:900;
+
+}
+
+.section-title span{
+
+    color:var(--green);
+
+}
+
+.section-note{
+
+    color:var(--muted);
+
+    font-size:11px;
+
+}
+
+/* =========================================================
+   INDUSTRIAS
+   ========================================================= */
+
+.industries{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+}
+
+.industry{
+
+    min-width:0;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #0a1d13,
+            #050d09
+        );
+
+    border:1px solid #173d29;
+
+    border-radius:20px;
+
+    padding:17px;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.industry::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    bottom:0;
+
+    width:3px;
+
+    background:var(--green);
+
+}
+
+.industry.warning::before{
+
+    background:var(--yellow);
+
+}
+
+.industry.danger::before{
+
+    background:var(--red);
+
+}
+
+.industry-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.industry-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-width:0;
+
+}
+
+.industry-logo{
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:12px;
+
+    background:#112b1e;
+
+    border:1px solid #2b6042;
+
+    display:grid;
+
+    place-items:center;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    color:white;
+
+    flex:none;
+
+    overflow:hidden;
+
+}
+
+.industry-logo img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    padding:5px;
+
+}
+
+.industry-name{
+
+    font-size:15px;
+
+    font-weight:900;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+
+}
+
+.industry-percent{
+
+    font-size:24px;
+
+    font-weight:1000;
+
+    flex:none;
+
+}
+
+.industry-progress{
+
+    height:8px;
+
+    background:#1a3328;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin:15px 0;
+
+}
+
+.industry-progress-fill{
+
+    height:100%;
+
+    background:var(--green);
+
+    border-radius:20px;
+
+}
+
+.warning .industry-progress-fill{
+
+    background:var(--yellow);
+
+}
+
+.danger .industry-progress-fill{
+
+    background:var(--red);
+
+}
+
+.money-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:8px;
+
+}
+
+.money-box{
+
+    min-width:0;
+
+}
+
+.money-box small{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+}
+
+.money-box strong{
+
+    display:block;
+
+    font-size:13px;
+
+    margin-top:4px;
+
+    overflow-wrap:anywhere;
+
+}
+
+.industry-divider{
+
+    height:1px;
+
+    background:#173226;
+
+    margin:15px 0;
+
+}
+
+.industry-bottom{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+}
+
+.daily-box{
+
+    min-width:0;
+
+}
+
+.daily-box small{
+
+    color:var(--muted);
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+}
+
+.daily-box strong{
+
+    display:block;
+
+    color:var(--green);
+
+    font-size:18px;
+
+    margin-top:4px;
+
+    overflow-wrap:anywhere;
+
+}
+
+.warning .daily-box strong{
+
+    color:var(--yellow);
+
+}
+
+.danger .daily-box strong{
+
+    color:var(--red);
+
+}
+
+.remaining{
+
+    color:var(--red);
+
+}
+
+.days-left{
+
+    margin-top:12px;
+
+    color:#799287;
+
+    font-size:10px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+}
+
+/* =========================================================
+   BOTTOM GRID
+   ========================================================= */
+
+.bottom-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:14px;
+
+    margin-top:14px;
+
+}
+
+/* =========================================================
+   RADAR
+   ========================================================= */
+
+.radar{
+
+    background:
+
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(39,232,120,.13),
+            transparent 30%
+        ),
+
+        #07140d;
+
+    border:1px solid #205437;
+
+    border-radius:20px;
+
+    padding:20px;
+
+}
+
+.radar-content{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.radar-circle{
+
+    width:115px;
+
+    height:115px;
+
+    border-radius:50%;
+
+    flex:none;
+
+    position:relative;
+
+    border:1px solid #21653c;
+
+    background:
+
+        repeating-radial-gradient(
+            circle,
+            transparent 0 15px,
+            rgba(39,232,120,.2) 16px 17px
+        );
+
+}
+
+.radar-circle::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:2px;
+
+    height:48%;
+
+    left:50%;
+
+    top:4%;
+
+    background:var(--green);
+
+    transform:
+        rotate(45deg);
+
+    transform-origin:bottom center;
+
+    box-shadow:
+        0 0 10px var(--green);
+
+}
+
+.radar-circle::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    left:calc(50% - 5px);
+
+    top:calc(50% - 5px);
+
+    box-shadow:
+        0 0 15px var(--green);
+
+}
+
+.radar-title{
+
+    color:var(--green);
+
+    font-size:20px;
+
+    font-weight:1000;
+
+    margin:5px 0;
+
+}
+
+.radar-text{
+
+    color:#829a8e;
+
+    font-size:12px;
+
+    line-height:1.5;
+
+}
+
+.focus{
+
+    margin-top:15px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    padding:8px 12px;
+
+    border-radius:10px;
+
+    background:#230d0d;
+
+    border:1px solid #692323;
+
+    color:#ff6565;
+
+    font-size:11px;
+
+    font-weight:800;
+
+}
+
+/* =========================================================
+   RANKING
+   ========================================================= */
+
+.ranking{
+
+    background:#07140d;
+
+    border:1px solid #193a28;
+
+    border-radius:20px;
+
+    padding:18px;
+
+}
+
+.rank{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 7px;
+
+    border-bottom:1px solid #142b20;
+
+}
+
+.rank:last-child{
+
+    border-bottom:0;
+
+}
+
+.rank-number{
+
+    width:28px;
+
+    font-weight:900;
+
+    color:#8ca398;
+
+}
+
+.rank-avatar{
+
+    width:38px;
+
+    height:38px;
+
+    border-radius:50%;
+
+    background:#17392a;
+
+    display:grid;
+
+    place-items:center;
+
+    color:#b4ffcd;
+
+    font-weight:900;
+
+}
+
+.rank-info{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+.rank-info strong{
+
+    display:block;
+
+    font-size:13px;
+
+}
+
+.rank-info small{
+
+    display:block;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-top:3px;
+
+}
+
+.rank-percent{
+
+    font-size:17px;
+
+    font-weight:1000;
+
+}
+
+/* =========================================================
+   BOTTOM NAV MOBILE
+   ========================================================= */
+
+.mobile-nav{
+
+    display:none;
+
+}
+
+/* =========================================================
+   RESPONSIVO TABLET
+   ========================================================= */
+
+@media(max-width:1100px){
+
+    .sidebar{
+
+        width:205px;
+
+    }
+
+    .main{
+
+        width:calc(100% - 205px);
+
+        margin-left:205px;
+
+    }
+
+    .hero-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .hero-content{
+
+        grid-template-columns:1fr 170px;
+
     }
 
     .industries{
-        grid-template-columns:repeat(3,1fr);
+
+        grid-template-columns:repeat(2,1fr);
+
     }
 
 }
 
-/* ================= TABLET ================= */
+/* =========================================================
+   TABLET MENOR
+   ========================================================= */
 
-@media(max-width:900px){
+@media(max-width:800px){
 
-    .hero-grid{
-        grid-template-columns:1fr;
+    .sidebar{
+
+        display:none;
+
     }
 
-    .circle{
-        width:130px;
-        height:130px;
+    .main{
+
+        width:100%;
+
+        margin-left:0;
+
+        padding:16px;
+
+        padding-bottom:90px;
+
     }
 
     .stats{
+
         grid-template-columns:repeat(2,1fr);
+
     }
 
-    .industries{
-        grid-template-columns:repeat(2,1fr);
+    .bottom-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .mobile-nav{
+
+        position:fixed;
+
+        display:grid;
+
+        grid-template-columns:repeat(5,1fr);
+
+        left:10px;
+
+        right:10px;
+
+        bottom:
+
+            max(10px, env(safe-area-inset-bottom));
+
+        height:64px;
+
+        background:
+
+            rgba(4,15,9,.96);
+
+        border:1px solid #1b3b2a;
+
+        border-radius:18px;
+
+        z-index:100;
+
+        backdrop-filter:blur(15px);
+
+        box-shadow:
+            0 10px 40px rgba(0,0,0,.5);
+
+    }
+
+    .mobile-nav-item{
+
+        border:0;
+
+        background:transparent;
+
+        color:#70877c;
+
+        display:flex;
+
+        flex-direction:column;
+
+        justify-content:center;
+
+        align-items:center;
+
+        gap:3px;
+
+        font-size:9px;
+
+    }
+
+    .mobile-nav-item span{
+
+        font-size:18px;
+
+    }
+
+    .mobile-nav-item.active{
+
+        color:var(--green);
+
     }
 
 }
 
-/* ================= CELULAR ================= */
+/* =========================================================
+   CELULAR
+   ========================================================= */
 
 @media(max-width:600px){
 
-    .app{
-        padding:12px;
+    .main{
+
+        padding:11px;
+
+        padding-bottom:90px;
+
     }
 
     .header{
+
         align-items:flex-start;
+
     }
 
-    .subtitle{
-        font-size:11px;
+    .month-title{
+
+        font-size:19px;
+
     }
 
-    .header-actions{
-        gap:5px;
+    .header-sub{
+
+        font-size:10px;
+
     }
 
-    .mode{
-        max-width:130px;
-        font-size:12px;
-        padding:10px 7px;
-    }
+    .header-btn{
 
-    .icon-btn{
         width:40px;
-        height:40px;
+
+        padding:0;
+
+        font-size:16px;
+
+    }
+
+    .mode-select{
+
+        width:105px;
+
+        font-size:11px;
+
+        padding:0 5px;
+
     }
 
     .hero{
-        border-radius:20px;
+
         padding:18px;
+
+        border-radius:19px;
+
     }
 
-    .hero-grid{
-        gap:16px;
+    .hero-content{
+
+        grid-template-columns:1fr;
+
     }
 
-    .hero-title{
-        font-size:48px;
+    .progress-circle{
+
+        width:120px;
+
+        height:120px;
+
     }
 
-    .circle{
-        width:118px;
-        height:118px;
+    .hero-percent{
+
+        font-size:54px;
+
     }
 
-    .circle-number{
-        font-size:28px;
+    .hero-values{
+
+        flex-direction:column;
+
+        gap:5px;
+
+    }
+
+    .workdays{
+
+        padding:18px;
+
+        border-radius:19px;
+
+    }
+
+    .week{
+
+        gap:3px;
+
+    }
+
+    .day{
+
+        padding:7px 1px;
+
+    }
+
+    .day strong{
+
+        font-size:8px;
+
+    }
+
+    .day span{
+
+        font-size:11px;
+
+    }
+
+    .workdays-number strong{
+
+        font-size:40px;
+
     }
 
     .stats{
-        grid-template-columns:repeat(2,1fr);
+
+        grid-template-columns:1fr 1fr;
+
+        gap:8px;
+
     }
 
     .stat{
-        padding:14px;
+
+        padding:13px;
+
+        border-radius:14px;
+
     }
 
-    .stat-value{
-        font-size:18px;
+    .stat strong{
+
+        font-size:17px;
+
     }
 
     .industries{
+
         grid-template-columns:1fr;
+
+        gap:9px;
+
     }
 
     .industry{
-        padding:16px;
+
+        padding:15px;
+
+        border-radius:17px;
+
     }
 
-    .section-title{
-        font-size:17px;
+    .industry-percent{
+
+        font-size:21px;
+
+    }
+
+    .bottom-grid{
+
+        gap:9px;
+
     }
 
     .radar{
-        align-items:flex-start;
+
+        padding:16px;
+
     }
 
-    .radar-icon{
-        width:50px;
-        height:50px;
+    .radar-content{
+
+        gap:12px;
+
+    }
+
+    .radar-circle{
+
+        width:90px;
+
+        height:90px;
+
+    }
+
+    .radar-title{
+
+        font-size:16px;
+
     }
 
 }
 
-/* ================= CELULARES MUITO PEQUENOS ================= */
+/* =========================================================
+   CELULAR PEQUENO
+   ========================================================= */
 
-@media(max-width:360px){
+@media(max-width:370px){
 
-    .app{
-        padding:9px;
+    .main{
+
+        padding:8px;
+
     }
 
-    .logo{
-        font-size:24px;
+    .month-title{
+
+        font-size:17px;
+
     }
 
-    .mode{
-        max-width:115px;
+    .mode-select{
+
+        width:92px;
+
+        font-size:10px;
+
     }
 
-    .hero-title{
-        font-size:42px;
+    .header-btn{
+
+        display:none;
+
     }
 
     .stats{
+
         grid-template-columns:1fr;
+
     }
 
-    .hero-footer{
-        flex-direction:column;
+    .hero-percent{
+
+        font-size:48px;
+
     }
 
-    .bottom-item{
-        font-size:9px;
+    .workdays-number strong{
+
+        font-size:36px;
+
     }
 
 }
 
-/* ================= PAISAGEM CELULAR ================= */
+/* =========================================================
+   CELULAR PAISAGEM
+   ========================================================= */
 
-@media(max-height:500px) and (orientation:landscape){
-
-    .app{
-        max-width:1000px;
-    }
-
-    .hero-grid{
-        grid-template-columns:1fr 1fr;
-    }
+@media(
+    max-height:520px
+) and (
+    orientation:landscape
+){
 
     .industries{
-        grid-template-columns:repeat(3,1fr);
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .hero-content{
+
+        grid-template-columns:1fr 150px;
+
     }
 
 }
 
-/* ================= REDUZIR MOVIMENTO ================= */
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
     *{
-        scroll-behavior:auto!important;
+
         transition:none!important;
+
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="app">
+
+
+<!-- ======================================================
+     SIDEBAR
+     ====================================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+        META<span>+</span>
+    </div>
+
+
+    <nav class="nav">
+
+        <button class="nav-item active">
+            <span class="nav-icon">⌂</span>
+            Início
+        </button>
+
+        <button class="nav-item">
+            <span class="nav-icon">🏭</span>
+            Indústrias
+        </button>
+
+        <button class="nav-item">
+            <span class="nav-icon">🎯</span>
+            Metas
+        </button>
+
+        <button class="nav-item">
+            <span class="nav-icon">◉</span>
+            Lançamentos
+        </button>
+
+        <button class="nav-item">
+            <span class="nav-icon">🏆</span>
+            Ranking
+        </button>
+
+        <button class="nav-item">
+            <span class="nav-icon">▤</span>
+            Relatórios
+        </button>
+
+        <button class="nav-item">
+            <span class="nav-icon">◷</span>
+            Histórico
+        </button>
+
+        <button class="nav-item">
+            <span class="nav-icon">⚙</span>
+            Configurações
+        </button>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="user-mini">
+
+            <div class="avatar">
+                JS
+            </div>
+
+            <div class="user-info">
+
+                <strong>
+                    João Siena
+                </strong>
+
+                <span>
+                    Vendedor
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- ======================================================
+     MAIN
+     ====================================================== -->
+
+<main class="main">
+
+<div class="container">
+
+
+<!-- HEADER -->
 
 <header class="header">
 
     <div>
-        <div class="logo">
-            META<span>+</span>
+
+        <div class="month-title">
+            RESUMO DO MÊS •
+            <span id="monthName">
+                CARREGANDO
+            </span>
         </div>
 
-        <div class="subtitle">
-            Olá, João 👋 • seu desempenho
+        <div class="header-sub">
+            Controle de metas comerciais
         </div>
+
     </div>
 
-    <div class="header-actions">
 
-        <button class="icon-btn">
+    <div class="header-right">
+
+        <button class="header-btn">
             🔔
         </button>
 
-        <select class="mode" id="mode">
+        <button class="header-btn">
+            🌙
+        </button>
+
+        <select
+            id="mode"
+            class="mode-select"
+        >
+
             <option value="vendedor">
                 👤 Vendedor
             </option>
@@ -738,6 +2123,7 @@ button{
             <option value="supervisor">
                 👨‍💼 Supervisor
             </option>
+
         </select>
 
     </div>
@@ -745,37 +2131,80 @@ button{
 </header>
 
 
-<!-- ================= HERO ================= -->
+<!-- HERO + DIAS ÚTEIS -->
 
-<section class="hero">
+<section class="hero-grid">
 
-    <div class="hero-grid">
+
+<!-- DESEMPENHO -->
+
+<div class="hero">
+
+    <div class="hero-label">
+        Desempenho geral
+    </div>
+
+
+    <div class="hero-content">
 
         <div>
 
-            <div class="eyebrow">
-                Desempenho geral
-            </div>
-
-            <div class="hero-title">
+            <div
+                class="hero-percent"
+                id="overallPercent"
+            >
                 78%
             </div>
 
-            <div class="hero-text">
-                Você está no caminho certo para
-                fechar seus objetivos.
+            <div class="hero-description">
+                da meta atingida
+            </div>
+
+            <div
+                style="
+                    margin-top:14px;
+                    color:#4df08c;
+                    font-size:13px;
+                    font-weight:900;
+                "
+                id="overallStatus"
+            >
+                🚀 NO RITMO!
             </div>
 
         </div>
 
 
-        <div>
+        <div class="progress-circle">
 
-            <div class="circle">
+            <div class="circle-inside">
 
-                <div class="circle-number">
-                    78%
-                </div>
+                <strong id="heroRealized">
+                    R$ 312.000
+                </strong>
+
+                <span>
+                    Realizado
+                </span>
+
+                <div
+                    style="
+                        height:1px;
+                        background:#294a38;
+                        margin:8px 0;
+                    "
+                ></div>
+
+                <strong
+                    id="heroMeta"
+                    style="font-size:18px;"
+                >
+                    R$ 400.000
+                </strong>
+
+                <span>
+                    Meta do mês
+                </span>
 
             </div>
 
@@ -784,779 +2213,1610 @@ button{
     </div>
 
 
-    <div class="progress">
+    <div class="hero-progress">
 
         <div
-            class="progress-bar"
-            style="width:78%">
-        </div>
+            class="hero-progress-fill"
+            id="heroProgress"
+        ></div>
 
     </div>
 
 
-    <div class="hero-footer">
+    <div class="hero-values">
 
         <span>
             Realizado:
-            <strong>R$ 312.000</strong>
+            <strong id="heroRealized2">
+                R$ 312.000
+            </strong>
+        </span>
+
+        <span>
+            Falta:
+            <strong
+                id="heroMissing"
+                style="color:var(--red);"
+            >
+                R$ 88.000
+            </strong>
         </span>
 
         <span>
             Meta:
-            <strong>R$ 400.000</strong>
+            <strong id="heroMeta2">
+                R$ 400.000
+            </strong>
         </span>
 
     </div>
 
+</div>
+
+
+<!-- DIAS ÚTEIS -->
+
+<div class="workdays">
+
+    <div class="workdays-title">
+        📅 Cálculo por dias úteis
+    </div>
+
+
+    <div class="workdays-number">
+
+        <strong id="remainingWorkdays">
+            8
+        </strong>
+
+        <span>
+            dias úteis restantes
+        </span>
+
+    </div>
+
+
+    <div
+        class="week"
+        id="weekDays"
+    ></div>
+
+
+    <div class="workday-bottom">
+
+        <div class="work-stat">
+
+            <small>
+                Necessário por dia útil
+            </small>
+
+            <strong
+                class="green-text"
+                id="teamDaily"
+            >
+                R$ 11.000
+            </strong>
+
+        </div>
+
+
+        <div class="work-stat">
+
+            <small>
+                Falta para a meta
+            </small>
+
+            <strong
+                class="red-text"
+                id="teamMissing"
+            >
+                R$ 88.000
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
 </section>
 
 
-<!-- ================= ESTATÍSTICAS ================= -->
+<!-- STATS -->
 
 <section class="stats">
 
-    <div class="stat">
 
-        <div class="stat-label">
-            DIAS RESTANTES
-        </div>
+<div class="stat">
 
-        <div class="stat-value">
-            8 dias
-        </div>
+    <small>
+        Projeção final
+    </small>
 
-    </div>
+    <strong
+        class="green-text"
+        id="projection"
+    >
+        R$ 418.000
+    </strong>
 
-
-    <div class="stat">
-
-        <div class="stat-label">
-            FALTA
-        </div>
-
-        <div class="stat-value red">
-            R$ 88 mil
-        </div>
-
-    </div>
+</div>
 
 
-    <div class="stat">
+<div class="stat">
 
-        <div class="stat-label">
-            NECESSÁRIO / DIA
-        </div>
+    <small>
+        Ritmo atual
+    </small>
 
-        <div class="stat-value green">
-            R$ 11 mil
-        </div>
+    <strong
+        class="green-text"
+        id="rhythm"
+    >
+        NO RITMO
+    </strong>
 
-    </div>
+</div>
 
 
-    <div class="stat">
+<div class="stat">
 
-        <div class="stat-label">
-            RITMO ATUAL
-        </div>
+    <small>
+        Dias úteis no mês
+    </small>
 
-        <div class="stat-value green">
-            NO RITMO
-        </div>
+    <strong id="totalWorkdays">
+        22
+    </strong>
 
-    </div>
+</div>
+
+
+<div class="stat">
+
+    <small>
+        Média diária atual
+    </small>
+
+    <strong id="dailyAverage">
+        R$ 19.500
+    </strong>
+
+</div>
+
 
 </section>
 
 
-<!-- ================= INDUSTRIAS ================= -->
+<!-- INDUSTRIAS -->
 
 <div class="section-header">
 
     <div class="section-title">
-        🏭 Minhas indústrias
+        🏭 DESEMPENHO POR
+        <span>INDÚSTRIA</span>
     </div>
 
-    <div class="section-info">
-        8 dias restantes
-    </div>
-
-</div>
-
-
-<section class="industries">
-
-
-<!-- J&J -->
-
-<div class="industry">
-
-    <div class="industry-top">
-
-        <div class="industry-name">
-            J&J
-        </div>
-
-        <div class="industry-percent green">
-            87%
-        </div>
-
-    </div>
-
-
-    <div class="mini-progress">
-
-        <div
-            class="mini-fill"
-            style="width:87%">
-        </div>
-
-    </div>
-
-
-    <div class="money-line">
-
-        <span>
-            Realizado:
-            <strong>R$ 87.000</strong>
-        </span>
-
-        <span>
-            Meta:
-            <strong>R$ 100.000</strong>
-        </span>
-
-    </div>
-
-
-    <div class="industry-divider"></div>
-
-
-    <div class="daily">
-
-        <div>
-
-            <div class="daily-label">
-                Falta
-            </div>
-
-            <div class="daily-value">
-                R$ 13.000
-            </div>
-
-        </div>
-
-        <div>
-
-            <div class="daily-label">
-                Meta por dia
-            </div>
-
-            <div class="daily-value">
-                R$ 1.625
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="days">
-        8 dias restantes
+    <div class="section-note">
+        Meta calculada por dia útil
     </div>
 
 </div>
 
 
-<!-- BEAUTYCOLOR -->
-
-<div class="industry">
-
-    <div class="industry-top">
-
-        <div class="industry-name">
-            BeautyColor
-        </div>
-
-        <div class="industry-percent yellow">
-            72%
-        </div>
-
-    </div>
+<section
+    class="industries"
+    id="industries"
+></section>
 
 
-    <div class="mini-progress">
+<!-- RADAR + RANKING -->
 
-        <div
-            class="mini-fill"
-            style="width:72%">
-        </div>
-
-    </div>
+<section class="bottom-grid">
 
 
-    <div class="money-line">
+<!-- RADAR -->
 
-        <span>
-            Realizado:
-            <strong>R$ 36.000</strong>
-        </span>
+<div class="radar">
 
-        <span>
-            Meta:
-            <strong>R$ 50.000</strong>
-        </span>
+    <div class="radar-content">
 
-    </div>
-
-
-    <div class="industry-divider"></div>
-
-
-    <div class="daily">
+        <div class="radar-circle"></div>
 
         <div>
 
-            <div class="daily-label">
-                Falta
+            <div
+                class="hero-label"
+                style="color:var(--green);"
+            >
+                🎯 Radar da Meta
             </div>
 
-            <div class="daily-value yellow">
-                R$ 14.000
+            <div
+                class="radar-title"
+                id="radarTitle"
+            >
+                VOCÊ ESTÁ NO RITMO!
+            </div>
+
+            <div
+                class="radar-text"
+                id="radarText"
+            >
+                Seu ritmo atual permite alcançar
+                o objetivo do mês.
+            </div>
+
+            <div class="focus">
+                🎯 FOCO PRINCIPAL:
+                <span id="focusIndustry">
+                    Hypera
+                </span>
             </div>
 
         </div>
 
-        <div>
-
-            <div class="daily-label">
-                Meta por dia
-            </div>
-
-            <div class="daily-value yellow">
-                R$ 1.750
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="days">
-        8 dias restantes
     </div>
 
 </div>
 
 
-<!-- HYPERA -->
+<!-- RANKING -->
 
-<div class="industry">
+<div class="ranking">
 
-    <div class="industry-top">
+    <div
+        class="section-header"
+        style="margin-top:0;"
+    >
 
-        <div class="industry-name">
-            Hypera
+        <div class="section-title">
+            🏆 RANKING DA EQUIPE
         </div>
 
-        <div class="industry-percent yellow">
-            64%
-        </div>
-
-    </div>
-
-
-    <div class="mini-progress">
-
-        <div
-            class="mini-fill"
-            style="width:64%">
+        <div class="section-note">
+            % da própria meta
         </div>
 
     </div>
 
 
-    <div class="money-line">
-
-        <span>
-            Realizado:
-            <strong>R$ 44.000</strong>
-        </span>
-
-        <span>
-            Meta:
-            <strong>R$ 70.000</strong>
-        </span>
-
-    </div>
-
-
-    <div class="industry-divider"></div>
-
-
-    <div class="daily">
-
-        <div>
-
-            <div class="daily-label">
-                Falta
-            </div>
-
-            <div class="daily-value yellow">
-                R$ 26.000
-            </div>
-
-        </div>
-
-        <div>
-
-            <div class="daily-label">
-                Meta por dia
-            </div>
-
-            <div class="daily-value yellow">
-                R$ 3.250
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="days">
-        8 dias restantes
-    </div>
-
-</div>
-
-
-<!-- LINEA -->
-
-<div class="industry">
-
-    <div class="industry-top">
-
-        <div class="industry-name">
-            Linea
-        </div>
-
-        <div class="industry-percent green">
-            91%
-        </div>
-
-    </div>
-
-
-    <div class="mini-progress">
-
-        <div
-            class="mini-fill"
-            style="width:91%">
-        </div>
-
-    </div>
-
-
-    <div class="money-line">
-
-        <span>
-            Realizado:
-            <strong>R$ 55.000</strong>
-        </span>
-
-        <span>
-            Meta:
-            <strong>R$ 60.000</strong>
-        </span>
-
-    </div>
-
-
-    <div class="industry-divider"></div>
-
-
-    <div class="daily">
-
-        <div>
-
-            <div class="daily-label">
-                Falta
-            </div>
-
-            <div class="daily-value">
-                R$ 5.000
-            </div>
-
-        </div>
-
-        <div>
-
-            <div class="daily-label">
-                Meta por dia
-            </div>
-
-            <div class="daily-value">
-                R$ 625
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="days">
-        8 dias restantes
-    </div>
-
-</div>
-
-
-<!-- DUCOCO -->
-
-<div class="industry">
-
-    <div class="industry-top">
-
-        <div class="industry-name">
-            Ducoco
-        </div>
-
-        <div class="industry-percent green">
-            83%
-        </div>
-
-    </div>
-
-
-    <div class="mini-progress">
-
-        <div
-            class="mini-fill"
-            style="width:83%">
-        </div>
-
-    </div>
-
-
-    <div class="money-line">
-
-        <span>
-            Realizado:
-            <strong>R$ 25.000</strong>
-        </span>
-
-        <span>
-            Meta:
-            <strong>R$ 30.000</strong>
-        </span>
-
-    </div>
-
-
-    <div class="industry-divider"></div>
-
-
-    <div class="daily">
-
-        <div>
-
-            <div class="daily-label">
-                Falta
-            </div>
-
-            <div class="daily-value">
-                R$ 5.000
-            </div>
-
-        </div>
-
-        <div>
-
-            <div class="daily-label">
-                Meta por dia
-            </div>
-
-            <div class="daily-value">
-                R$ 625
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="days">
-        8 dias restantes
-    </div>
-
-</div>
-
-
-<!-- EMBARE -->
-
-<div class="industry">
-
-    <div class="industry-top">
-
-        <div class="industry-name">
-            Embaré
-        </div>
-
-        <div class="industry-percent yellow">
-            58%
-        </div>
-
-    </div>
-
-
-    <div class="mini-progress">
-
-        <div
-            class="mini-fill"
-            style="width:58%">
-        </div>
-
-    </div>
-
-
-    <div class="money-line">
-
-        <span>
-            Realizado:
-            <strong>R$ 23.000</strong>
-        </span>
-
-        <span>
-            Meta:
-            <strong>R$ 40.000</strong>
-        </span>
-
-    </div>
-
-
-    <div class="industry-divider"></div>
-
-
-    <div class="daily">
-
-        <div>
-
-            <div class="daily-label">
-                Falta
-            </div>
-
-            <div class="daily-value red">
-                R$ 17.000
-            </div>
-
-        </div>
-
-        <div>
-
-            <div class="daily-label">
-                Meta por dia
-            </div>
-
-            <div class="daily-value red">
-                R$ 2.125
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="days">
-        8 dias restantes
-    </div>
+    <div id="rankingList"></div>
 
 </div>
 
 </section>
 
 
-<!-- ================= RADAR ================= -->
-
-<section class="radar">
-
-    <div class="radar-icon">
-        🎯
-    </div>
-
-    <div>
-
-        <div class="eyebrow">
-            Radar da Meta
-        </div>
-
-        <div class="radar-title">
-            VOCÊ ESTÁ NO RITMO
-        </div>
-
-        <div class="radar-text">
-            Seu ritmo atual permite alcançar
-            o objetivo. Continue acelerando
-            nas indústrias que estão abaixo.
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= RANKING ================= -->
-
-<div class="section-header">
-
-    <div class="section-title">
-        🏆 Ranking da equipe
-    </div>
-
-    <div class="section-info">
-        Percentual da própria meta
-    </div>
-
 </div>
 
-
-<section class="ranking">
-
-
-<div class="person">
-
-    <div class="avatar">
-        C
-    </div>
-
-    <div class="person-info">
-
-        <div class="person-name">
-            Carlos
-        </div>
-
-        <div class="person-status">
-            Quase batendo o objetivo
-        </div>
-
-    </div>
-
-    <div class="person-percent green">
-        96%
-    </div>
-
-</div>
+</main>
 
 
-<div class="person">
+<!-- ======================================================
+     MOBILE NAV
+     ====================================================== -->
 
-    <div class="avatar">
-        J
-    </div>
+<nav class="mobile-nav">
 
-    <div class="person-info">
-
-        <div class="person-name">
-            João (Você)
-        </div>
-
-        <div class="person-status">
-            Muito bem, continue assim!
-        </div>
-
-    </div>
-
-    <div class="person-percent green">
-        91%
-    </div>
-
-</div>
-
-
-<div class="person">
-
-    <div class="avatar">
-        P
-    </div>
-
-    <div class="person-info">
-
-        <div class="person-name">
-            Pedro
-        </div>
-
-        <div class="person-status">
-            No caminho certo
-        </div>
-
-    </div>
-
-    <div class="person-percent green">
-        87%
-    </div>
-
-</div>
-
-
-<div class="person">
-
-    <div class="avatar">
-        L
-    </div>
-
-    <div class="person-info">
-
-        <div class="person-name">
-            Lucas
-        </div>
-
-        <div class="person-status">
-            Precisa acelerar
-        </div>
-
-    </div>
-
-    <div class="person-percent yellow">
-        76%
-    </div>
-
-</div>
-
-
-</section>
-
-
-<!-- ================= BOTTOM ================= -->
-
-<nav class="bottom">
-
-    <div class="bottom-item active">
-        <b>⌂</b>
+    <button class="mobile-nav-item active">
+        <span>⌂</span>
         Início
-    </div>
+    </button>
 
-    <div class="bottom-item">
-        <b>🏭</b>
+    <button class="mobile-nav-item">
+        <span>🏭</span>
         Indústrias
-    </div>
+    </button>
 
-    <div class="bottom-item">
-        <b>＋</b>
+    <button class="mobile-nav-item">
+        <span>＋</span>
         Lançar
-    </div>
+    </button>
 
-    <div class="bottom-item">
-        <b>🏆</b>
+    <button class="mobile-nav-item">
+        <span>🏆</span>
         Ranking
-    </div>
+    </button>
 
-    <div class="bottom-item">
-        <b>♙</b>
+    <button class="mobile-nav-item">
+        <span>♙</span>
         Perfil
-    </div>
+    </button>
 
 </nav>
 
+
 </div>
 
+
+<script>
+
+/* =========================================================
+   META+
+
+   IMPORTANTE:
+   Os dados abaixo são apenas para TESTE.
+
+   Depois vamos substituir por um painel onde o supervisor
+   alimenta os dados sem mexer no código.
+   ========================================================= */
+
+
+/* =========================================================
+   CONFIGURAÇÃO
+   ========================================================= */
+
+const CONFIG = {
+
+    vendedorAtual: "João",
+
+    diasUteis: {
+
+        segunda:true,
+        terca:true,
+        quarta:true,
+        quinta:true,
+        sexta:true,
+
+        sabado:false,
+        domingo:false
+
+    }
+
+};
+
+
+/* =========================================================
+   VENDEDORES
+   ========================================================= */
+
+const vendedores = [
+
+    "Carlos",
+
+    "João",
+
+    "Pedro",
+
+    "Lucas",
+
+    "Marcos"
+
+];
+
+
+/* =========================================================
+   INDÚSTRIAS
+   ========================================================= */
+
+const industrias = [
+
+    {
+        nome:"J&J",
+        logo:"",
+        meta:100000,
+        realizado:87000
+    },
+
+    {
+        nome:"BeautyColor",
+        logo:"",
+        meta:50000,
+        realizado:36000
+    },
+
+    {
+        nome:"Hypera",
+        logo:"",
+        meta:70000,
+        realizado:44000
+    },
+
+    {
+        nome:"Linea",
+        logo:"",
+        meta:60000,
+        realizado:55000
+    },
+
+    {
+        nome:"Ducoco",
+        logo:"",
+        meta:30000,
+        realizado:25000
+    },
+
+    {
+        nome:"Embaré",
+        logo:"",
+        meta:40000,
+        realizado:23000
+    }
+
+];
+
+
+/* =========================================================
+   DADOS DO RANKING
+   ========================================================= */
+
+const ranking = [
+
+    {
+        nome:"Carlos",
+        percentual:96,
+        status:"Quase batendo o objetivo"
+    },
+
+    {
+        nome:"João",
+        percentual:91,
+        status:"Você está aqui"
+    },
+
+    {
+        nome:"Pedro",
+        percentual:87,
+        status:"No caminho certo"
+    },
+
+    {
+        nome:"Lucas",
+        percentual:76,
+        status:"Precisa acelerar"
+    },
+
+    {
+        nome:"Marcos",
+        percentual:61,
+        status:"Precisa acelerar bastante"
+    }
+
+];
+
+
+/* =========================================================
+   UTILITÁRIOS
+   ========================================================= */
+
+function dinheiro(valor){
+
+    return valor.toLocaleString(
+        "pt-BR",
+        {
+            style:"currency",
+            currency:"BRL",
+            maximumFractionDigits:0
+        }
+    );
+
+}
+
+
+function percentual(meta,realizado){
+
+    if(meta <= 0){
+
+        return 0;
+
+    }
+
+    return Math.round(
+        (realizado / meta) * 100
+    );
+
+}
+
+
+function limitar(valor,min,max){
+
+    return Math.min(
+        Math.max(valor,min),
+        max
+    );
+
+}
+
+
+/* =========================================================
+   DIAS ÚTEIS
+
+   Segunda = 1
+   Terça   = 2
+   Quarta  = 3
+   Quinta  = 4
+   Sexta   = 5
+
+   Sábado e domingo NÃO entram.
+   ========================================================= */
+
+function ehDiaUtil(data){
+
+    const dia =
+        data.getDay();
+
+    return dia >= 1 && dia <= 5;
+
+}
+
+
+function contarDiasUteis(inicio,fim){
+
+    let total = 0;
+
+    let data = new Date(inicio);
+
+    data.setHours(0,0,0,0);
+
+    const final =
+        new Date(fim);
+
+    final.setHours(0,0,0,0);
+
+
+    while(data <= final){
+
+        if(ehDiaUtil(data)){
+
+            total++;
+
+        }
+
+        data.setDate(
+            data.getDate() + 1
+        );
+
+    }
+
+    return total;
+
+}
+
+
+/* =========================================================
+   MÊS ATUAL
+   ========================================================= */
+
+const hoje = new Date();
+
+const anoAtual =
+    hoje.getFullYear();
+
+const mesAtual =
+    hoje.getMonth();
+
+
+function primeiroDiaMes(){
+
+    return new Date(
+        anoAtual,
+        mesAtual,
+        1
+    );
+
+}
+
+
+function ultimoDiaMes(){
+
+    return new Date(
+        anoAtual,
+        mesAtual + 1,
+        0
+    );
+
+}
+
+
+/* =========================================================
+   DIAS ÚTEIS DO MÊS
+   ========================================================= */
+
+const primeiroDia =
+    primeiroDiaMes();
+
+const ultimoDia =
+    ultimoDiaMes();
+
+
+const totalDiasUteis =
+    contarDiasUteis(
+        primeiroDia,
+        ultimoDia
+    );
+
+
+/* =========================================================
+   DIAS ÚTEIS PASSADOS
+   ========================================================= */
+
+const diasUteisPassados =
+    contarDiasUteis(
+        primeiroDia,
+        hoje
+    );
+
+
+/* =========================================================
+   DIAS ÚTEIS RESTANTES
+
+   Aqui está a regra importante:
+
+   - segunda a sexta = conta
+   - sábado = não conta
+   - domingo = não conta
+   ========================================================= */
+
+let diasUteisRestantes = 0;
+
+
+/*
+
+Se hoje for dia útil,
+contamos a partir de HOJE.
+
+Se for sábado/domingo,
+contamos a partir da próxima segunda.
+
+*/
+
+let inicioRestante =
+    new Date(hoje);
+
+
+if(!ehDiaUtil(inicioRestante)){
+
+    inicioRestante.setDate(
+        inicioRestante.getDate() + 1
+    );
+
+}
+
+
+if(inicioRestante > ultimoDia){
+
+    diasUteisRestantes = 0;
+
+}else{
+
+    diasUteisRestantes =
+        contarDiasUteis(
+            inicioRestante,
+            ultimoDia
+        );
+
+}
+
+
+/* =========================================================
+   TOTAL DA EQUIPE / VENDEDOR
+
+   Nesta versão estamos usando os dados das indústrias
+   como se fossem o resultado do vendedor atual.
+
+   Depois conectaremos ao banco de dados.
+   ========================================================= */
+
+function totalGeral(){
+
+    let meta = 0;
+
+    let realizado = 0;
+
+
+    industrias.forEach(
+        industria => {
+
+            meta += industria.meta;
+
+            realizado += industria.realizado;
+
+        }
+    );
+
+
+    return {
+
+        meta,
+
+        realizado,
+
+        percentual:
+            percentual(
+                meta,
+                realizado
+            )
+
+    };
+
+}
+
+
+const total =
+    totalGeral();
+
+
+/* =========================================================
+   FALTA
+   ========================================================= */
+
+const falta =
+    Math.max(
+        total.meta -
+        total.realizado,
+        0
+    );
+
+
+/* =========================================================
+   META NECESSÁRIA POR DIA ÚTIL
+
+   IMPORTANTE:
+
+   NÃO usamos dias corridos.
+
+   Apenas dias úteis.
+   ========================================================= */
+
+const necessarioPorDia =
+    diasUteisRestantes > 0
+
+        ? falta / diasUteisRestantes
+
+        : 0;
+
+
+/* =========================================================
+   MÉDIA ATUAL
+
+   Considera apenas os dias úteis que já passaram.
+   ========================================================= */
+
+const mediaAtual =
+    diasUteisPassados > 0
+
+        ? total.realizado /
+          diasUteisPassados
+
+        : 0;
+
+
+/* =========================================================
+   PROJEÇÃO
+
+   Média atual × total de dias úteis.
+   ========================================================= */
+
+const projecao =
+    mediaAtual *
+    totalDiasUteis;
+
+
+/* =========================================================
+   RITMO
+   ========================================================= */
+
+let ritmo =
+    "NO RITMO";
+
+
+if(projecao < total.meta * .9){
+
+    ritmo =
+        "PRECISA ACELERAR";
+
+}else if(
+    projecao >= total.meta
+){
+
+    ritmo =
+        "ACIMA DA META";
+
+}
+
+
+/* =========================================================
+   STATUS DE PERCENTUAL
+   ========================================================= */
+
+function classePercentual(p){
+
+    if(p >= 90){
+
+        return "green";
+
+    }
+
+    if(p >= 75){
+
+        return "yellow";
+
+    }
+
+    return "red";
+
+}
+
+
+/* =========================================================
+   NOME DO MÊS
+   ========================================================= */
+
+const nomesMeses = [
+
+    "JANEIRO",
+    "FEVEREIRO",
+    "MARÇO",
+    "ABRIL",
+    "MAIO",
+    "JUNHO",
+    "JULHO",
+    "AGOSTO",
+    "SETEMBRO",
+    "OUTUBRO",
+    "NOVEMBRO",
+    "DEZEMBRO"
+
+];
+
+
+document
+.getElementById("monthName")
+.textContent =
+    nomesMeses[mesAtual]
+    + "/"
+    + anoAtual;
+
+
+/* =========================================================
+   HEADER / HERO
+   ========================================================= */
+
+document
+.getElementById("overallPercent")
+.textContent =
+    total.percentual + "%";
+
+
+document
+.getElementById("heroRealized")
+.textContent =
+    dinheiro(total.realizado);
+
+
+document
+.getElementById("heroRealized2")
+.textContent =
+    dinheiro(total.realizado);
+
+
+document
+.getElementById("heroMeta")
+.textContent =
+    dinheiro(total.meta);
+
+
+document
+.getElementById("heroMeta2")
+.textContent =
+    dinheiro(total.meta);
+
+
+document
+.getElementById("heroMissing")
+.textContent =
+    dinheiro(falta);
+
+
+document
+.getElementById("heroProgress")
+.style.width =
+    limitar(
+        total.percentual,
+        0,
+        100
+    ) + "%";
+
+
+document
+.getElementById("overallStatus")
+.textContent =
+    ritmo === "ACIMA DA META"
+
+        ? "🏆 ACIMA DA META!"
+
+        : ritmo === "NO RITMO"
+
+        ? "🚀 NO RITMO!"
+
+        : "⚠️ PRECISA ACELERAR";
+
+
+/* =========================================================
+   DIAS ÚTEIS
+   ========================================================= */
+
+document
+.getElementById("remainingWorkdays")
+.textContent =
+    diasUteisRestantes;
+
+
+document
+.getElementById("totalWorkdays")
+.textContent =
+    totalDiasUteis;
+
+
+document
+.getElementById("teamDaily")
+.textContent =
+    dinheiro(necessarioPorDia);
+
+
+document
+.getElementById("teamMissing")
+.textContent =
+    dinheiro(falta);
+
+
+document
+.getElementById("projection")
+.textContent =
+    dinheiro(projecao);
+
+
+document
+.getElementById("dailyAverage")
+.textContent =
+    dinheiro(mediaAtual);
+
+
+document
+.getElementById("rhythm")
+.textContent =
+    ritmo;
+
+
+/* =========================================================
+   CALENDÁRIO DE DIAS DA SEMANA
+   ========================================================= */
+
+function renderSemana(){
+
+    const container =
+        document.getElementById(
+            "weekDays"
+        );
+
+
+    container.innerHTML = "";
+
+
+    const nomes = [
+
+        "DOM",
+        "SEG",
+        "TER",
+        "QUA",
+        "QUI",
+        "SEX",
+        "SÁB"
+
+    ];
+
+
+    const hojeDia =
+        hoje.getDay();
+
+
+    for(let i=0;i<7;i++){
+
+        const item =
+            document.createElement(
+                "div"
+            );
+
+
+        item.className =
+            "day";
+
+
+        if(i === 0 || i === 6){
+
+            item.classList.add(
+                "weekend"
+            );
+
+        }else{
+
+            item.classList.add(
+                "workday"
+            );
+
+        }
+
+
+        if(i === hojeDia){
+
+            item.classList.add(
+                "today"
+            );
+
+        }
+
+
+        item.innerHTML = `
+
+            <strong>
+                ${nomes[i]}
+            </strong>
+
+            <span>
+                ${
+                    i === 0
+                    ? "×"
+                    : i === 6
+                    ? "×"
+                    : "✓"
+                }
+            </span>
+
+        `;
+
+
+        container.appendChild(item);
+
+    }
+
+}
+
+
+renderSemana();
+
+
+/* =========================================================
+   RENDER DAS INDÚSTRIAS
+   ========================================================= */
+
+function renderIndustries(){
+
+    const container =
+        document.getElementById(
+            "industries"
+        );
+
+
+    container.innerHTML = "";
+
+
+    industrias.forEach(
+        industria => {
+
+
+            const p =
+                percentual(
+                    industria.meta,
+                    industria.realizado
+                );
+
+
+            const faltaIndustria =
+                Math.max(
+                    industria.meta -
+                    industria.realizado,
+                    0
+                );
+
+
+            const metaPorDia =
+                diasUteisRestantes > 0
+
+                ? faltaIndustria /
+                  diasUteisRestantes
+
+                : 0;
+
+
+            let classe = "";
+
+
+            if(p < 60){
+
+                classe = "danger";
+
+            }else if(p < 80){
+
+                classe = "warning";
+
+            }
+
+
+            let logoHTML = "";
+
+
+            if(industria.logo){
+
+                logoHTML = `
+
+                    <img
+                        src="${industria.logo}"
+                        alt="${industria.nome}"
+                    >
+
+                `;
+
+            }else{
+
+                logoHTML =
+                    industria.nome
+                    .substring(0,3)
+                    .toUpperCase();
+
+            }
+
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "industry " + classe;
+
+
+            card.innerHTML = `
+
+                <div class="industry-top">
+
+                    <div class="industry-brand">
+
+                        <div
+                            class="industry-logo"
+                        >
+                            ${logoHTML}
+                        </div>
+
+                        <div
+                            class="industry-name"
+                        >
+                            ${industria.nome}
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="
+                            industry-percent
+                            ${classePercentual(p)}
+                        "
+                    >
+                        ${p}%
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="industry-progress"
+                >
+
+                    <div
+                        class="
+                            industry-progress-fill
+                        "
+                        style="
+                            width:
+                            ${limitar(p,0,100)}%
+                        "
+                    ></div>
+
+                </div>
+
+
+                <div class="money-grid">
+
+                    <div class="money-box">
+
+                        <small>
+                            Realizado
+                        </small>
+
+                        <strong>
+                            ${dinheiro(
+                                industria.realizado
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="money-box">
+
+                        <small>
+                            Meta
+                        </small>
+
+                        <strong>
+                            ${dinheiro(
+                                industria.meta
+                            )}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="industry-divider"></div>
+
+
+                <div class="industry-bottom">
+
+                    <div class="daily-box">
+
+                        <small>
+                            Falta
+                        </small>
+
+                        <strong
+                            class="remaining"
+                        >
+                            ${dinheiro(
+                                faltaIndustria
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="daily-box">
+
+                        <small>
+                            Meta por dia útil
+                        </small>
+
+                        <strong>
+                            ${dinheiro(
+                                metaPorDia
+                            )}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="days-left">
+
+                    📅
+
+                    ${diasUteisRestantes}
+
+                    dias úteis restantes
+
+                </div>
+
+            `;
+
+
+            container.appendChild(card);
+
+        }
+    );
+
+}
+
+
+renderIndustries();
+
+
+/* =========================================================
+   FOCO PRINCIPAL
+
+   Descobre automaticamente a indústria com menor %.
+   ========================================================= */
+
+function industriaFoco(){
+
+    return industrias
+        .slice()
+        .sort(
+            (a,b) =>
+
+                percentual(
+                    a.meta,
+                    a.realizado
+                )
+
+                -
+
+                percentual(
+                    b.meta,
+                    b.realizado
+                )
+
+        )[0];
+
+}
+
+
+const foco =
+    industriaFoco();
+
+
+document
+.getElementById("focusIndustry")
+.textContent =
+    foco.nome;
+
+
+if(total.percentual >= 90){
+
+    document
+    .getElementById("radarTitle")
+    .textContent =
+        "VOCÊ ESTÁ QUASE LÁ!";
+
+    document
+    .getElementById("radarText")
+    .textContent =
+        "Continue forte. Você está próximo de concluir seus objetivos.";
+
+}else if(total.percentual >= 75){
+
+    document
+    .getElementById("radarTitle")
+    .textContent =
+        "VOCÊ ESTÁ NO RITMO!";
+
+}else{
+
+    document
+    .getElementById("radarTitle")
+    .textContent =
+        "PRECISA ACELERAR!";
+
+    document
+    .getElementById("radarText")
+    .textContent =
+        "Concentre seus esforços nas indústrias com menor percentual.";
+
+}
+
+
+/* =========================================================
+   RANKING
+   ========================================================= */
+
+function renderRanking(){
+
+    const container =
+        document.getElementById(
+            "rankingList"
+        );
+
+
+    container.innerHTML = "";
+
+
+    ranking
+    .slice()
+    .sort(
+        (a,b) =>
+            b.percentual -
+            a.percentual
+    )
+    .forEach(
+        (pessoa,index) => {
+
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "rank";
+
+
+            const classe =
+                classePercentual(
+                    pessoa.percentual
+                );
+
+
+            item.innerHTML = `
+
+                <div
+                    class="rank-number"
+                >
+                    ${index + 1}º
+                </div>
+
+
+                <div
+                    class="rank-avatar"
+                >
+                    ${
+                        pessoa.nome
+                        .charAt(0)
+                    }
+                </div>
+
+
+                <div
+                    class="rank-info"
+                >
+
+                    <strong>
+                        ${
+                            pessoa.nome ===
+                            CONFIG.vendedorAtual
+
+                            ? "Você (" +
+                              pessoa.nome +
+                              ")"
+
+                            : pessoa.nome
+                        }
+                    </strong>
+
+                    <small>
+                        ${pessoa.status}
+                    </small>
+
+                </div>
+
+
+                <div
+                    class="
+                        rank-percent
+                        ${classe}
+                    "
+                >
+                    ${pessoa.percentual}%
+                </div>
+
+            `;
+
+
+            container.appendChild(item);
+
+        }
+    );
+
+}
+
+
+renderRanking();
+
+
+/* =========================================================
+   MODO VENDEDOR / SUPERVISOR
+
+   POR ENQUANTO apenas visual.
+   Depois vamos criar login e permissões reais.
+   ========================================================= */
+
+document
+.getElementById("mode")
+.addEventListener(
+    "change",
+    function(){
+
+        if(
+            this.value ===
+            "supervisor"
+        ){
+
+            alert(
+                "Modo Supervisor selecionado. A próxima etapa será criar o painel de alimentação."
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   NAVEGAÇÃO VISUAL
+   ========================================================= */
+
+document
+.querySelectorAll(
+    ".nav-item"
+)
+.forEach(
+    botao => {
+
+        botao.addEventListener(
+            "click",
+            function(){
+
+                document
+                .querySelectorAll(
+                    ".nav-item"
+                )
+                .forEach(
+                    item =>
+                        item.classList
+                        .remove("active")
+                );
+
+
+                this.classList
+                .add("active");
+
+            }
+        );
+
+    }
+);
+
+
+document
+.querySelectorAll(
+    ".mobile-nav-item"
+)
+.forEach(
+    botao => {
+
+        botao.addEventListener(
+            "click",
+            function(){
+
+                document
+                .querySelectorAll(
+                    ".mobile-nav-item"
+                )
+                .forEach(
+                    item =>
+                        item.classList
+                        .remove("active")
+                );
+
+
+                this.classList
+                .add("active");
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   FINAL
+   ========================================================= */
+
+console.log(
+    "META+ carregado."
+);
+
+console.log(
+    "Dias úteis no mês:",
+    totalDiasUteis
+);
+
+console.log(
+    "Dias úteis restantes:",
+    diasUteisRestantes
+);
+
+console.log(
+    "Meta necessária por dia:",
+    necessarioPorDia
+);
+
+</script>
+
 </body>
+
 </html>
